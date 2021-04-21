@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.tangchao.store/2021/04/21/Trim_galore/</loc>
+    
+    <lastmod>2021-04-21</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.tangchao.store/2021/04/17/%E6%97%A0%E4%BA%8B%E4%B8%8D%E5%BF%B5%E4%B8%80%E7%94%9F%EF%BC%8C%E6%9C%89%E4%BA%8B%E4%B8%80%E5%BF%83%E4%B8%8D%E4%B9%B1/</loc>
     
     <lastmod>2021-04-17</lastmod>
@@ -53,7 +60,7 @@
 
   <url>
     <loc>https://www.tangchao.store/</loc>
-    <lastmod>2021-04-17</lastmod>
+    <lastmod>2021-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -62,22 +69,29 @@
 
   
   <url>
+    <loc>https://www.tangchao.store/categories/seq-data-processing-app-learning/</loc>
+    <lastmod>2021-04-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.tangchao.store/categories/html/</loc>
-    <lastmod>2021-04-17</lastmod>
+    <lastmod>2021-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.tangchao.store/categories/%E6%89%AF%E7%8A%8A%E5%AD%90/</loc>
-    <lastmod>2021-04-17</lastmod>
+    <lastmod>2021-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.tangchao.store/categories/%E5%81%87%E6%AD%A3%E7%BB%8F/</loc>
-    <lastmod>2021-04-17</lastmod>
+    <lastmod>2021-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

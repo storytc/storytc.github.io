@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Ariel">
+
+
+
+
+
+<title>数据质控软件--Trim_galore | Ariel&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Ariel&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/Me">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Ariel&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/Me">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">数据质控软件--Trim_galore</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Ariel</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">四月 21, 2021&nbsp;&nbsp;11:17:03</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/seq-data-processing-app-learning/">seq-data processing app learning</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h4 id="Trim-galore"><a href="#Trim-galore" class="headerlink" title="Trim_galore"></a>Trim_galore</h4><blockquote>
+<p>Trim_galore是一款质控软件，主要用来trim甲基化(尤其是RRBS)数据，调用了Cutadapt和FastQC，用Perl写的脚本。其实用来处理其他Highthroughput数据也不是不可以，不过人家官方已经说明了适用的数据类型，根据自身情况进行设计吧。</p>
+</blockquote>
+<p>安装和下载就不细说了，毕竟笔记是给自己看的。两种方式：Github选择合适版本自己手动编译（<a target="_blank" rel="noopener" href="https://github.com/FelixKrueger/TrimGalore)%EF%BC%9Bminiconda%E7%8E%AF%E5%A2%83%E9%87%8C%E4%B8%80%E6%9D%A1%E5%91%BD%E4%BB%A4%E5%AE%89%E8%A3%85%E3%80%82">https://github.com/FelixKrueger/TrimGalore)；miniconda环境里一条命令安装。</a></p>
+<p>数据分析<strong>质控</strong>的重要性我也不赘述， 平地起高楼的道理。</p>
+<h4 id="Trim-galore的主要功能"><a href="#Trim-galore的主要功能" class="headerlink" title="Trim_galore的主要功能"></a>Trim_galore的主要功能</h4><h5 id="Step1-Quality-Trimming"><a href="#Step1-Quality-Trimming" class="headerlink" title="Step1.Quality Trimming"></a>Step1.Quality Trimming</h5><p>首先第一步是去除3‘端低质量的reads，根据fastq文件每条reads的第四行质量得分卡阈值去除。</p>
+<h5 id="Step2-Adapter-Trimming"><a href="#Step2-Adapter-Trimming" class="headerlink" title="Step2.Adapter Trimming"></a>Step2.Adapter Trimming</h5><p>调用Cutadapt去除3’端的接头序列。大致有四种模式：</p>
+<ul>
+<li><p>auto-detection</p>
+<p>在你没有提供接头序列的情况下，cutadapt自动检测<strong>前一百万条reads的5‘端12~13bp</strong>，内置了<strong>Illumina、nextera</strong>等等通用的测序接头序列。</p>
+</li>
+<li><p>manual adapter sequence specification</p>
+<p>详细的命令使用会在后面细说，这里讲清楚一下接头污染的容忍度权衡。如果我们保留了或者说接头序列没有去干净，不仅影响比对率，损失有效reads，对于BS-seq来说，也会影响call methylation的部分。如果要彻底清除接头序列的污染，势必损失大量其他有效的reads。</p>
+</li>
+<li><p>rrbs模式</p>
+<p>主要是针对Mspl酶处理的RRBS-seq方法来处理的，这里我不是很了解，暂时掠过。</p>
+</li>
+<li><p>non-directional</p>
+<p>这个模式与建库方式有关，如果是non-directional文库可以加上<code>--non_directional</code>。</p>
+</li>
+</ul>
+<h5 id="Step3-Remove-short-reads"><a href="#Step3-Remove-short-reads" class="headerlink" title="Step3.Remove short reads"></a>Step3.Remove short reads</h5><p>经过前两步处理后会产生一些短序列，Trim_galore默认保留<strong>20bp</strong>以上的reads。</p>
+<p>对于<code>pair-end</code>数据，有<code>--paired</code>参数会在_1和2fq文件都经过trim之后进行双端reads的验证，也就是说paired-end中只要有一条reads不合格，那么两条reads都会被去除。也可以在这一步使用<code>retain_unpaired</code>来保留一条合格的双端reads。因为甲基化数据本身比对率就低，见过会在比对过程进行两次比对的(第二次是将unpaired的reads重新单端比对)。</p>
+<h5 id="Step4-Specialised-Trimming"><a href="#Step4-Specialised-Trimming" class="headerlink" title="Step4.Specialised Trimming"></a>Step4.Specialised Trimming</h5><p>主要包括<strong>hardtrim</strong>和<strong>Mouse epigenetic clock trimming</strong>，后续细讲<strong>Hardtrim</strong>。</p>
+<hr>
+<p><strong>接下来是本篇的重点了，也是我写这篇的目的，因为也记不住所有的命令，所以都写在这，需要看了就过来翻翻~</strong></p>
+<h4 id="Trim-galore的主要命令"><a href="#Trim-galore的主要命令" class="headerlink" title="Trim_galore的主要命令"></a>Trim_galore的主要命令</h4><p><em>[Usage]trim_galore [options] &lt;filename(s)&gt;</em></p>
+<ul>
+<li><code>-h/--help</code><ul>
+<li>帮助</li>
+</ul>
+</li>
+<li><code>-v/--version</code><ul>
+<li>打印版本号</li>
+</ul>
+</li>
+<li><code>-q/--quality &lt;INT&gt;</code><ul>
+<li>对应第一步，默认质量得分阈值是20</li>
+</ul>
+</li>
+<li><code>--phred33</code><ul>
+<li>碱基质量得分的编码方式。现在的测序数据一般是phred33，也就是ASCII+33。cutadapt默认也是phred33</li>
+</ul>
+</li>
+<li><code>--phred64</code><ul>
+<li>同上，使用ASCII+64</li>
+</ul>
+</li>
+<li><code>--fastqc</code><ul>
+<li>在完成trim之后对reads进行<strong>fastqc</strong></li>
+</ul>
+</li>
+<li><code>--fastqc_args &quot;ARGS&quot;</code><ul>
+<li> 传递一些<strong>fastqc</strong>的参数。eg: <code>--fastqc_args &quot;--outdir /home/...&quot;</code></li>
+</ul>
+</li>
+<li><code>-a/--adapter &lt;STRING&gt;</code><ul>
+<li>这个就是第二步中的“个性化定制去接头序列”。如果没有指定就默认为<strong>auto-detect</strong>，前一百万条reads没有检测到接头的话就默认**–Ilumina**</li>
+</ul>
+</li>
+<li><code>-a2/--adapter2 &lt;STRING&gt;</code><ul>
+<li>可选，主要针对pair-end数据的read2序列</li>
+</ul>
+</li>
+<li><code>--Illumina</code><ul>
+<li>illumina的通用接头序列，<strong>AGATCGGAAGAGC</strong></li>
+</ul>
+</li>
+<li><code>--nextera</code><ul>
+<li><strong>CTGTCTCTTATA</strong></li>
+</ul>
+</li>
+<li><code>--small_rna</code><ul>
+<li><strong>TGGAATTCTCGG</strong>,  需要注意的是如果设置了<code>--small_rna</code>的话最短保留序列长度就会自动变为18bp，并且pair-end数据的<code>-a2</code>为<strong>GATCGTCGGACT</strong></li>
+</ul>
+</li>
+<li><code>--max_length &lt;INT&gt;</code><ul>
+<li>trim之后的序列最长长度，只建议smallRNA的数据使用以确保small RNA</li>
+</ul>
+</li>
+<li><code>--stringency &lt;INT&gt;</code><ul>
+<li>去接头需要达到的与给定adapter的overlap碱基数，默认为<strong>1</strong>， 也就是说只要3’端有一个碱基与adapter吻合就会进行trim</li>
+</ul>
+</li>
+<li><code>-e &lt;ERROR RATE&gt;</code><ul>
+<li>允许的错误率，默认为<strong>0.1</strong></li>
+</ul>
+</li>
+<li><code>--gzip</code><ul>
+<li>压缩输出文件，如果input文件是gzip格式那么output文件也默认为gzip格式</li>
+</ul>
+</li>
+<li><code>--don_gzip</code><ul>
+<li>不压缩输出文件</li>
+</ul>
+</li>
+<li><code>--length &lt;INT&gt;</code><ul>
+<li>trim之后的最短序列保留长度，默认为<strong>20bp</strong>， 对于设置了<code>--paired</code>的双端数据，只要有一条read不满足可接受的最短长度，两条reads都会被去除；如果设置了<code>--retain_unpaired</code>那么可以保留其中一条符合要求的read</li>
+</ul>
+</li>
+<li><code>--max_n COUNT</code><ul>
+<li>每条read保留Ns的最大数目，对于双端模式，如果其中一条不满足那么两条都被去除。</li>
+</ul>
+</li>
+<li><code>--trim_n</code><ul>
+<li>从read的两端移除Ns，对于RRBS模式不起作用。</li>
+</ul>
+</li>
+<li><code>-o/--output_dir &lt;DIR&gt;</code><ul>
+<li>如果指定了输出路径且存在，将输出到指定路径；如果路径不存在会先自动创建目录；如果不指定则将输出文件到当前目录</li>
+</ul>
+</li>
+<li><code>--no_report_file</code></li>
+<li><code>--suppress_warn</code></li>
+<li><code>--clip_R1 &lt;INT&gt;</code><ul>
+<li>默认是OFF状态，作用是移除read1(pair-end)的5‘端的N个碱基</li>
+</ul>
+</li>
+<li><code>--clip_R2  &lt;INT&gt;</code><ul>
+<li>默认是OFF状态，作用是移除read2(pair-end)的5’端的N个碱基，如果是BS-seq，官方文档中是建议使用的</li>
+</ul>
+</li>
+<li><code>--three_prime_clip_R1 &lt;INT&gt;</code><ul>
+<li>默认是OFF状态，同上面两条命令一个意思，只不过是从<strong>3‘端</strong>移除碱基</li>
+</ul>
+</li>
+<li><code>--three_prime_clip_R2 &lt;INT&gt;</code><ul>
+<li>默认是OFF状态，同上。</li>
+</ul>
+</li>
+<li><code>--2colour/--nextseq INT</code><ul>
+<li>调用Cutadapt的<code>-nextseq-trim=3&#39;CUTOFF</code>命令， 有quality cutoff但不过滤G碱基，overcalling Gbase，主要适用NextSeq- and NovaSeq-platforms</li>
+</ul>
+</li>
+<li><code>--path_to_cutadapt &lt;/path/to/cutadapt&gt;</code><ul>
+<li>如果cutadapt没有加入环境变量<code>PATH</code>，需要自己指定cutadapt的路径</li>
+</ul>
+</li>
+<li><code>--basename &lt;PREFERRED_NAME&gt;</code><ul>
+<li>指定输出文件的前缀：<code>PREFERRED_NAME_trimmed.fq(.gz)</code>, 或者 <code>PREFERRED_NAME_val_1.fq(.gz)</code> and <code>PREFERRED_NAME_val_2.fq(.gz)</code> for paired-end data.</li>
+</ul>
+</li>
+<li><code>-j/--cores INT</code><ul>
+<li>指定线程数，默认是<strong>1</strong>。如果要使用Cutadapt多线程，需要<strong>Python3</strong>和<strong>pigz</strong>。python从shebang给的路径下寻找或者从指定cutadapt的路径下。如果找到的python版本是python2，那么默认设置线程数为1。最后文档中建议适用<strong>4</strong>个线程。</li>
+</ul>
+</li>
+</ul>
+<h4 id="Specific-Trimming"><a href="#Specific-Trimming" class="headerlink" title="Specific Trimming"></a>Specific Trimming</h4><ul>
+<li><code>--hardtrim5 &lt;int&gt;</code><ul>
+<li>在不进行接头和质量过滤的情况下，<strong>hardtrim</strong>就是指定某端保留碱基的个数，其他部分全部去除。</li>
+<li>保留<strong>3’端</strong><INT>个数的碱基</li>
+</ul>
+</li>
+<li><code>--hardtrim3 &lt;int&gt;</code><ul>
+<li>同上，保留<strong>5‘端</strong><INT>个数的碱基，其余去除</li>
+</ul>
+</li>
+<li>RRBS模式部分掠过。</li>
+</ul>
+<h4 id="Paired-end-specific-options"><a href="#Paired-end-specific-options" class="headerlink" title="Paired-end specific options"></a>Paired-end specific options</h4><ul>
+<li><code>--paired</code><ul>
+<li>言简意赅就是期望“成双成对”，如果两条reads中的一条不达标，那么另一条也会陪它被丢弃。</li>
+</ul>
+</li>
+<li><code>-t/--trim1</code><ul>
+<li>从每条read的<strong>3‘端</strong>去除<strong>1bp</strong>，适用于要用bowtie1比对的情况</li>
+</ul>
+</li>
+<li><code>--retain_unpaired</code><ul>
+<li>override<code>--paired</code>，即使一条不达标另一条也会被保留。写入**.unpaired_1/2.fq**文件。默认是OFF状态。</li>
+</ul>
+</li>
+<li><code>-r1/--length_1 &lt;INT&gt;</code><ul>
+<li>在<code>--retain_unpaired</code>的情况下read1保留的最短长度，默认是<strong>35bp</strong></li>
+</ul>
+</li>
+<li><code>-r2/--length_2 &lt;INT&gt;</code><ul>
+<li>同</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Ariel</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://www.tangchao.store/2021/04/21/Trim_galore/">https://www.tangchao.store/2021/04/21/Trim_galore/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>白头如新，倾盖如故</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2021/04/17/%E6%97%A0%E4%BA%8B%E4%B8%8D%E5%BF%B5%E4%B8%80%E7%94%9F%EF%BC%8C%E6%9C%89%E4%BA%8B%E4%B8%80%E5%BF%83%E4%B8%8D%E4%B9%B1/">无事不念一生，有事一心不乱</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Ariel | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                你们点了<span id="busuanzi_value_site_pv"></span>下
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                侧目<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+</footer>
+
+
+    </div>
+</body>
+</html>
