@@ -204,33 +204,46 @@
 <li>list中的每一个元素作为一列:</li>
 </ol>
 <ul>
-<li><p>```R<br>as.data.frame(l)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  &lt;img src&#x3D;&quot;&#x2F;images&#x2F;image-20210502122847223.png&quot; alt&#x3D;&quot;image-20210502122847223&quot; style&#x3D;&quot;zoom:67%;&quot; &#x2F;&gt;</span><br><span class="line"></span><br><span class="line">2. list中的每个元素作为一行:</span><br><span class="line"></span><br><span class="line">   - &#96;&#96;&#96;R</span><br><span class="line">     data.frame(matrix(unlist(l), nrow &#x3D; length(l)))</span><br></pre></td></tr></table></figure>
-
-   <img src="/images/image-20210502123938131.png" alt="image-20210502123938131" style="zoom:67%;" />
-
-<p>   注意这个会自动决定对其列，行数为list的元素个数</p>
+<li><code>as.data.frame(l)</code><img src="/images/image-20210502122847223.png" alt="image-20210502122847223" style="zoom:67%;" /></li>
+</ul>
+<ol start="2">
+<li><p>list中的每个元素作为一行:</p>
 <ul>
-<li><p>```R<br>do.call(rbind.data.frame, l)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  &lt;img src&#x3D;&quot;&#x2F;images&#x2F;image-20210502124112172.png&quot; alt&#x3D;&quot;image-20210502124112172&quot; style&#x3D;&quot;zoom:67%;&quot; &#x2F;&gt;</span><br><span class="line"></span><br><span class="line">  这个又不太一样了，会自动补齐。</span><br><span class="line"></span><br><span class="line">- &#96;&#96;&#96;R</span><br><span class="line">  dplyr::bind_rows(l)</span><br></pre></td></tr></table></figure>
+<li><p><code>data.frame(matrix(unlist(l), nrow = length(l)))</code></p>
+<img src="/images/image-20210502123938131.png" alt="image-20210502123938131" style="zoom:67%;" />
 
+<p>注意这个会自动决定对其列，行数为list的元素个数</p>
+</li>
+<li><p><code>do.call(rbind.data.frame, l)</code></p>
+<img src="/images/image-20210502124112172.png" alt="image-20210502124112172" style="zoom:67%;" />
+
+<p>这个又不太一样了，会自动补齐。</p>
+</li>
+<li><p><code>dplyr::bind_rows(l)</code></p>
 <img src="/images/image-20210502124726995.png" alt="image-20210502124726995" style="zoom:67%;" />
 
 <p>注意这个函数需要list的元素有<strong>name</strong>，否则会报错，可以检查<code>names(l)</code>是否有值。既然有<code>bind_rows()</code>按行合并, 那么聪明如你，肯定也会想到有<code>bind_cols</code>啦~，这个就是将列表元素按列合并。 </p>
 </li>
 </ul>
 </li>
-</ul>
-<ol start="3">
 <li><p>list所有元素展开变为长格式:</p>
 <ul>
-<li>```R<br>plyr::ldply(l, data.frame)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">     &lt;img src&#x3D;&quot;&#x2F;images&#x2F;image-20210502124411049.png&quot; alt&#x3D;&quot;image-20210502124411049&quot; style&#x3D;&quot;zoom:67%;&quot; &#x2F;&gt;</span><br><span class="line"></span><br><span class="line">     </span><br><span class="line"></span><br><span class="line">     如果你的list比较复杂，比如每个元素还是一个data.frame， 想要转换为宽格式，可以使用&#96;purrr::redeuce&#96;函数。eg：</span><br><span class="line"></span><br><span class="line">     &#96;your_list_name %&gt;% purrr::reduce(full_join)&#96;</span><br><span class="line"></span><br><span class="line">##### Convert data.frame to list:</span><br><span class="line"></span><br><span class="line">​	&lt;img src&#x3D;&quot;..&#x2F;images&#x2F;image-20210502185452923.png&quot; alt&#x3D;&quot;image-20210502185452923&quot; style&#x3D;&quot;zoom:67%;&quot; &#x2F;&gt;</span><br><span class="line"></span><br><span class="line">- 每一列作为一个元素：</span><br><span class="line"></span><br><span class="line">  &#96;&#96;&#96;R</span><br><span class="line">  as.list(df)</span><br></pre></td></tr></table></figure></li>
+<li><p><code>plyr::ldply(l, data.frame)</code></p>
+<img src="/images/image-20210502124411049.png" alt="image-20210502124411049" style="zoom:67%;" />
+
+
+
+<p>如果你的list比较复杂，比如每个元素还是一个data.frame， 想要转换为宽格式，可以使用<code>purrr::redeuce</code>函数。eg：</p>
+<p><code>your_list_name %&gt;% purrr::reduce(full_join)</code></p>
+</li>
 </ul>
 </li>
 </ol>
-  <img src="/images/image-20210502185631359.png" alt="image-20210502185631359" style="zoom:67%;" />
-
+<h5 id="Convert-data-frame-to-list"><a href="#Convert-data-frame-to-list" class="headerlink" title="Convert data.frame to list:"></a>Convert data.frame to list:</h5><p>​    <img src="/images/image-20210502185452923.png" alt="image-20210502185452923" style="zoom:67%;" /></p>
 <ul>
+<li><p>每一列作为一个元素：</p>
+<p><code>as.list(df)</code></p>
+<img src="/images/image-20210502185631359.png" alt="image-20210502185631359" style="zoom:67%;" /></li>
 <li><p>将整个data.frame作为一个元素：</p>
 <img src="/images/image-20210502185738442.png" alt="image-20210502185738442" style="zoom:67%;" /></li>
 <li><p>使用<code>split</code>函数：</p>
