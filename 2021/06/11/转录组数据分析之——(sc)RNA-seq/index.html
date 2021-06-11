@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Ariel">
+
+
+
+
+
+<title>转录组数据分析之——RNA-seq/scRNA-seq | Ariel&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Ariel&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/Me">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Ariel&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/Me">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">转录组数据分析之——RNA-seq/scRNA-seq</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Ariel</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">六月 11, 2021&nbsp;&nbsp;19:39:51</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/RNA-seq-analysis/">RNA-seq analysis</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h3 id="转录组数据分析之——RNA-seq-scRNA-seq"><a href="#转录组数据分析之——RNA-seq-scRNA-seq" class="headerlink" title="转录组数据分析之——RNA-seq/scRNA-seq"></a>转录组数据分析之——RNA-seq/scRNA-seq</h3><p>RNA-seq是RNA sequencing的简写，我们测细胞或组织的RNA信息来定量在同一条件下或不同条件下的基因表达。我们知道中心法则，mRNA会翻译成为蛋白质来在细胞内行使生物功能， 那么实际上我们通过测定mRNA可以知道从DNA–&gt;mRNA的产出有多少。<strong>尽管所有细胞都包含相同的DNA序列，但是细胞和细胞是不一样的</strong>（比如神经细胞和小肠上皮细胞，甚至同一类型细胞之间也会存在差异），这正是由于在不同细胞中不同的基因<strong>“打开”程度</strong>不同（受很多因素影响，比如突变），转录产出的RNA和翻译产出的蛋白质因此不同。</p>
+<hr>
+<p>根据中心法则，DNA首先转录为mRNA，mRNA会在核糖体翻译为蛋白质。然而，有些基因编码mRNA并不能翻译为蛋白质，我们称为__非编码RNA__（non_coding RNA)，包括rRNA、siRNA等，这也是组学之间不能完全对应的一个重要原因。所有从基因转录而来的RNA都称为<strong>转录本</strong>（transcripts)。这个过程详细一点见下图：</p>
+<img src="/images/image-20210604215416279.png" alt="image-20210604215416279" style="zoom:67%;" />
+
+<p>从DNA到RNA再到mRNA最后到蛋白质的过程。</p>
+<p>从sanger测序到正火的二代测序再到日臻成熟的第三代测序，感兴趣的可以详细理解原理，资源很多，这里稍微讲一下Illumina的建库流程：</p>
+<ul>
+<li>首先是从样本中分离出RNA，并且用DNA酶去除DNA的污染；</li>
+<li>选择性“吊出”mRNA(从所有RNA中)；因为RNA中rRNA占绝大多数，而mRNA在人类中约只占2%。所以如果要研究蛋白编码基因，那么我们就需要富集mRNA，一般是通过PolyA尾来富集。</li>
+<li>mRNA打断。富集出mRNA之后我们要进行mRNA的片段打断，形成<strong>fragments</strong>,  是测序过程一个比较重要的参数。</li>
+<li>mRNA逆转录为双链cDNA，两端加上测序接头。通过接头我们能判断测序sequence来自于正链还是负链；</li>
+<li>最后是PCR扩增(不是所有测序都有这一步)，最终选择300~500bp的fragments进行测序。</li>
+</ul>
+<p>测序得到的序列我们称之为<strong>reads</strong>。</p>
+<p>我看了很多转录组的学习资源，不管是RNA-seq还是scRNA-seq，关于这个技术的使用介绍很多，可是关于它们的适用场景以及我们使用转录组的目的都没有讲出来。我一开始也就是理解大家写出来的东西，用RNA-seq得到转录组水平然后差异分析、可变剪切分析等等等等。从来没有深入的想过这个技术真正的内涵是什么。我没有很多经验，但就我已有的感受来说，bulk RNA-seq可以研究多种情况下基因的变化，假设前提是我们认为细胞之间没有差异或者说细胞本身的差异与生物学差异相比可以忽略不计。所以我们平均某种情况下所有细胞的基因表达水平与另一种情况进行比较。因此对于bulk RNA-seq来说，生物学重复是必不可少的！为什么说单细胞的RNA-seq“威力”这么大，从字面意思来理解，可以解析细胞与细胞之间的异同，更重要的是，它可以捕捉到一个连续的过程，or you can say like a <strong>stream</strong>。我们可以捕捉到不同的cell state，而不同的cell state可能就反映在你的UMAP/tSNE的降维可视化的cluster上。举个例子比如血液学领域的HSC的分化模型由分支树形图改进成了流形的分化模型。也是因此免疫表型和基因型通常有不对应的情况。</p>
+<img src="/images/image-20210611194148560.png" alt="image-20210611194148560" style="zoom:67%;" />
+
+<p>所有解释权归本人所有。</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Ariel</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://www.tangchao.store/2021/06/11/%E8%BD%AC%E5%BD%95%E7%BB%84%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8B%E2%80%94%E2%80%94(sc)RNA-seq/">https://www.tangchao.store/2021/06/11/%E8%BD%AC%E5%BD%95%E7%BB%84%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8B%E2%80%94%E2%80%94(sc)RNA-seq/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>白头如新，倾盖如故</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2021/06/04/%E9%95%BF%E7%9B%B8%E6%80%9D/"></a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Ariel | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                你们点了<span id="busuanzi_value_site_pv"></span>下
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                侧目<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+</footer>
+
+
+    </div>
+</body>
+</html>
