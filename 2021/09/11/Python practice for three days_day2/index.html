@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Ariel">
+
+
+
+
+
+<title>Python practice for three days----day2 | Ariel&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Ariel&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/Me">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Ariel&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/Me">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Python practice for three days----day2</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Ariel</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">九月 11, 2021&nbsp;&nbsp;16:17:37</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/programming/">programming</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <blockquote>
+<p>今天是第二天，主要内容是python库的了解。以下内容均翻译至Jiang老师的课件，链接如下:<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/21332075">三天搞定Python - 知乎 (zhihu.com)</a></p>
+</blockquote>
+<h4 id="Outline"><a href="#Outline" class="headerlink" title="Outline"></a>Outline</h4><p><em>day1</em>：介绍Python和基础科学编程，包括数据类型、控制结构、函数和数据I/O；</p>
+<p><em>day2</em>：<strong>Numpy</strong>、<strong>Scipy</strong>、<strong>Matplotlib</strong>库的使用和利用Python解决一些数学计算问题；</p>
+<p><em>day3</em>：利用<strong>Pandas</strong>进行时间序列、统计和真实数据分析；</p>
+<h4 id="Import-Modules"><a href="#Import-Modules" class="headerlink" title="Import Modules"></a>Import Modules</h4><p>我们可以通过命令：</p>
+<p><code>import numpy</code>来导入<em>numpy</em>模块；</p>
+<p>或者是导入模块并命名简写：</p>
+<p><code>import numpy as np</code>;</p>
+<p>某些时候你可能只想导入模块的某一个函数：</p>
+<p><code>from scipy.stats import norm</code></p>
+<p>==Exercise==</p>
+<p>尝试导入<em>timeit</em>模块来获取任务运行时间：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> timeit</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun1</span>(<span class="params">x, y</span>):</span></span><br><span class="line">	<span class="keyword">return</span> x**<span class="number">2</span> + y**<span class="number">2</span></span><br><span class="line"></span><br><span class="line">t_start = timeit.default_timer()</span><br><span class="line">z = fun1(<span class="number">109.2</span>, <span class="number">367.1</span>)</span><br><span class="line">t_end = timeit.default_timer()</span><br><span class="line"></span><br><span class="line">cost = t_end - t_start</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Time cost of fun1 is %f&#x27;</span> %cost)</span><br></pre></td></tr></table></figure>
+
+<p><strong>我们今天会接触到的模块有</strong>：</p>
+<p><strong>Numpy</strong>：对多维数组的高效操作以及数学函数</p>
+<p><strong>Matplotlib</strong>：可视化的包，2D和3D</p>
+<p><strong>Scipy</strong>：实现很多数学算法的包，包括线性和非线性等式、优化以及数值整合等</p>
+<p><strong>Sympy</strong>：符号运算</p>
+<p><strong>Pandas</strong>：统计和数据分析（明天）</p>
+<h4 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h4><h5 id="1-The-ndarray-type"><a href="#1-The-ndarray-type" class="headerlink" title="1. The ndarray type"></a>1. The ndarray type</h5><p>Numpy包提供了一个新的数据类型：n维数组(n-dimensional array)</p>
+<ul>
+<li>与元组和列表不同，数组只能储存相同数据类型的数据</li>
+<li>和列表相比，更快，内存消耗更少</li>
+<li>数组提供更多的索引方法</li>
+</ul>
+<h5 id="2-Creating-the-ndarray"><a href="#2-Creating-the-ndarray" class="headerlink" title="2. Creating the ndarray"></a>2. Creating the ndarray</h5><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">np.array([<span class="number">2</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">7</span>]) <span class="comment"># array([2, 3, 6, 7])</span></span><br><span class="line">np.array([<span class="number">2</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">7.</span>]) <span class="comment"># array[2., 3., 6., 7.]</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="3-Creating-evenly-spaced-arrays"><a href="#3-Creating-evenly-spaced-arrays" class="headerlink" title="3. Creating evenly spaced arrays"></a>3. Creating evenly spaced arrays</h5><p><code>arange()</code></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">np.arange(<span class="number">5</span>) <span class="comment"># array([0, 1, 2, 3, 4])</span></span><br><span class="line">np.arrange(<span class="number">10</span>, <span class="number">100</span>, <span class="number">20</span>, dtype=<span class="built_in">float</span>) <span class="comment"># array([10., 30., 50., 70., 90.])</span></span><br></pre></td></tr></table></figure>
+
+<p><code>linespace()</code></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.linespace(<span class="number">0.</span>, <span class="number">2.5</span>, <span class="number">5</span>) <span class="comment"># array([0., 0.625, 1.25, 1.875, 2.5])</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="4-Matrix-by-multidimensional-array"><a href="#4-Matrix-by-multidimensional-array" class="headerlink" title="4. Matrix by multidimensional array"></a>4. Matrix by multidimensional array</h5><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]])</span><br><span class="line">a <span class="comment"># array([[1, 2, 3], [4, 5, 6]])</span></span><br><span class="line">a.shape() <span class="comment"># (2,3)</span></span><br><span class="line">a.ndim() <span class="comment"># 2</span></span><br><span class="line">a.size() <span class="comment"># 6</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="5-Shape-changing"><a href="#5-Shape-changing" class="headerlink" title="5. Shape changing"></a>5. Shape changing</h5><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">a = np.<span class="built_in">range</span>(<span class="number">0</span>, <span class="number">20</span>, <span class="number">1</span>) <span class="comment"># 1 pc</span></span><br><span class="line">b = a.reshape((<span class="number">4</span>, <span class="number">5</span>)) <span class="comment"># 4 rows, 5cols</span></span><br><span class="line">c = a.reshape((<span class="number">20</span>, <span class="number">1</span>)) <span class="comment"># 2 pcs</span></span><br><span class="line">d = a.reshape((-<span class="number">1</span>, <span class="number">4</span>)) <span class="comment"># -1: auto determine</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="6-Filling-arrays-with-random-numbers"><a href="#6-Filling-arrays-with-random-numbers" class="headerlink" title="6. Filling arrays with random numbers"></a>6. Filling arrays with random numbers</h5><p><code>rand</code>: 0~1之间均匀分布的随机数</p>
+<p><code>randn</code>: 均值为0、方差为1的标准高斯分布</p>
+<h5 id="7-Array-slicing-切片1D"><a href="#7-Array-slicing-切片1D" class="headerlink" title="7. Array slicing(切片1D)"></a>7. Array slicing(切片1D)</h5><p>python的切片[start:end] 包含起始位置但不包括终止位置。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line">a[<span class="number">1</span>:<span class="number">3</span>] <span class="comment"># array([1,2])</span></span><br><span class="line"><span class="comment">#省略的起止位置默认为0或array的全长</span></span><br><span class="line">a[:<span class="number">3</span>] <span class="comment"># array([0, 1, 2])</span></span><br><span class="line"><span class="comment">#负下标从array末尾开始往前数</span></span><br><span class="line">a[<span class="number">1</span>:-<span class="number">1</span>] <span class="comment"># array([1, 2, 3])</span></span><br></pre></td></tr></table></figure>
+
+<p>二维切片：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = np.<span class="built_in">range</span>(<span class="number">12</span>); a.shape = (<span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line">a[<span class="number">1</span>, <span class="number">2</span>] <span class="comment"># 6</span></span><br><span class="line">a[<span class="number">1</span>, -<span class="number">1</span>] <span class="comment"># 7</span></span><br><span class="line">a[:, <span class="number">1</span>] <span class="comment"># array([8, 9, 10, 11])</span></span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是对一个列表进行切片会生成一个原列表的copy，两个列表都指向同一个内存地址，因此当任意一个列表发生修改的时候，另一个列表也会发生改变。为了避免对原列表进行修改，可以采用<code>.copy()</code>函数。</p>
+<h5 id="8-矩阵乘法Matrix-multiplication"><a href="#8-矩阵乘法Matrix-multiplication" class="headerlink" title="8. 矩阵乘法Matrix multiplication"></a>8. 矩阵乘法Matrix multiplication</h5><p><strong>*代表矩阵相乘，而<code>.dot()</code>函数代表矩阵乘法</strong>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A = np.array([[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>]])</span><br><span class="line">A * A <span class="comment"># array([[1, 4], [9, 16]])</span></span><br><span class="line">np.dot(A, A) <span class="comment"># np.array([[7, 10], [15, 22]])</span></span><br></pre></td></tr></table></figure>
+
+<p><code>.dot()</code>函数也可以计算矩阵*向量乘法</p>
+<h5 id="9-array的读写"><a href="#9-array的读写" class="headerlink" title="9.array的读写"></a>9.array的读写</h5><p><code>savetxt()</code>存储table为txt文件，<code>loadtxt()</code>读取文件；</p>
+<p><code>save()</code>存储Numpy的二进制文件为.npy后缀，这种文件通过<code>np.load()</code>函数来读取。</p>
+<h4 id="Scipy"><a href="#Scipy" class="headerlink" title="Scipy"></a>Scipy</h4><img src="../images/image-20211009140224489.png" alt="image-20211009140224489" style="zoom:67%;" />
+
+<p>scipy的一些子模块</p>
+<p>具体不展开了 因为我也还不会…也不想学(捂脸)</p>
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Ariel</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://www.tangchao.store/2021/09/11/Python%20practice%20for%20three%20days_day2/">https://www.tangchao.store/2021/09/11/Python%20practice%20for%20three%20days_day2/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Conquer we must, as conquer we shall.</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/Python/"># Python</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/09/16/ISL%E7%AC%94%E8%AE%B0(1)/">ISL笔记(1)</a>
+            
+            
+            <a class="next" rel="next" href="/2021/09/09/R%E5%B9%B6%E8%A1%8C%E5%8C%85%E4%B9%8B%E2%80%94%E2%80%94parallel%E3%80%81foreach/"></a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Ariel | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                你们点了<span id="busuanzi_value_site_pv"></span>下
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                侧目<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+</footer>
+
+
+    </div>
+</body>
+</html>

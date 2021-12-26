@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Ariel">
+
+
+
+
+
+<title>Ariel&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Ariel&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/Me">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Ariel&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/Me">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title"></h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Ariel</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">九月 9, 2021&nbsp;&nbsp;20:36:54</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="R并行包之——parallel、foreach"><a href="#R并行包之——parallel、foreach" class="headerlink" title="R并行包之——parallel、foreach"></a>R并行包之——parallel、foreach</h2><blockquote>
+<p>R并行计算的包有很多，首先说明一下，我自己用过的包是parallel，但是没有试过foreach，可能有理解有偏差的地方，不必全盘接受。</p>
+</blockquote>
+<p>首先学习一下<code>lapply()</code>和<code>sapply()</code>函数：</p>
+<p>这两个函数都属于<strong>apply</strong>函数家族，不同的是<strong>lapply</strong>接受向量或列表对象，而输出总是列表；而<strong>sapply</strong>可以输出向量、矩阵或者数组，主要是有两个不同的参数：<strong>simplify</strong>和<strong>USE.NAMES</strong>。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">lapply(<span class="number">1</span>:<span class="number">5</span>, <span class="keyword">function</span>(x) <span class="built_in">c</span>(x^<span class="number">2</span>, x^<span class="number">3</span>) <span class="comment"># square of the input</span></span><br><span class="line">       <span class="comment"># output</span></span><br><span class="line">[[<span class="number">1</span>]]</span><br><span class="line">[<span class="number">1</span>] <span class="number">1</span> <span class="number">1</span></span><br><span class="line">[[<span class="number">2</span>]]</span><br><span class="line">[<span class="number">1</span>] <span class="number">4</span> <span class="number">8</span></span><br><span class="line">[[<span class="number">3</span>]]</span><br><span class="line">[<span class="number">1</span>] <span class="number">9</span> <span class="number">27</span></span><br><span class="line">[[<span class="number">4</span>]]</span><br><span class="line">[<span class="number">1</span>] <span class="number">16</span> <span class="number">64</span></span><br><span class="line">[[<span class="number">5</span>]]</span><br><span class="line">[<span class="number">1</span>] <span class="number">25</span> <span class="number">125</span>      </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sapply(<span class="number">1</span>:<span class="number">5</span>, <span class="keyword">function</span>(x) <span class="built_in">c</span>(x^<span class="number">2</span>,x^<span class="number">3</span>)) <span class="comment"># This outputs a matrix</span></span><br><span class="line">     [,<span class="number">1</span>] [,<span class="number">2</span>] [,<span class="number">3</span>] [,<span class="number">4</span>] [,<span class="number">5</span>]</span><br><span class="line">[<span class="number">1</span>,]    <span class="number">1</span>    <span class="number">4</span>    <span class="number">9</span>   <span class="number">16</span>   <span class="number">25</span></span><br><span class="line">[<span class="number">2</span>,]    <span class="number">1</span>    <span class="number">8</span>   <span class="number">27</span>   <span class="number">64</span>  <span class="number">125</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sapply(<span class="number">1</span>:<span class="number">5</span>, <span class="keyword">function</span>(x) x^<span class="number">2</span>, simplify = <span class="literal">FALSE</span>, USE.NAMES = <span class="literal">FALSE</span>) </span><br><span class="line"><span class="comment">#Output is same as for lapply()</span></span><br><span class="line">[[<span class="number">1</span>]]</span><br><span class="line">[<span class="number">1</span>] <span class="number">1</span> <span class="number">1</span></span><br><span class="line">[[<span class="number">2</span>]]</span><br><span class="line">[<span class="number">1</span>] <span class="number">4</span> <span class="number">8</span></span><br><span class="line">[[<span class="number">3</span>]]</span><br><span class="line">[<span class="number">1</span>]  <span class="number">9</span> <span class="number">27</span></span><br><span class="line">[[<span class="number">4</span>]]</span><br><span class="line">[<span class="number">1</span>] <span class="number">16</span> <span class="number">64</span></span><br><span class="line">[[<span class="number">5</span>]]</span><br><span class="line">[<span class="number">1</span>]  <span class="number">25</span> <span class="number">125</span></span><br></pre></td></tr></table></figure>
+
+<p>apply函数家族相比于其他函数较快，但是也只是沾了向量化计算的光，并不是真实意义上的并行计算。</p>
+<h2 id="Parallel"><a href="#Parallel" class="headerlink" title="Parallel"></a>Parallel</h2><ul>
+<li><p>首先得装上这个包并且可以调用吧</p>
+<p><code>library(parallel)</code></p>
+</li>
+<li><p>第二步查看一下你可以并行多少个核来计算</p>
+<p><code>cores = detectCores( )</code></p>
+</li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Ariel</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://www.tangchao.store/2021/09/09/R%E5%B9%B6%E8%A1%8C%E5%8C%85%E4%B9%8B%E2%80%94%E2%80%94parallel%E3%80%81foreach/">https://www.tangchao.store/2021/09/09/R%E5%B9%B6%E8%A1%8C%E5%8C%85%E4%B9%8B%E2%80%94%E2%80%94parallel%E3%80%81foreach/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Conquer we must, as conquer we shall.</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/09/11/Python%20practice%20for%20three%20days_day2/">Python practice for three days----day2</a>
+            
+            
+            <a class="next" rel="next" href="/2021/09/09/Python%20practice%20for%20three%20days_day1/">Python practice for three days----day1</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Ariel | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                你们点了<span id="busuanzi_value_site_pv"></span>下
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                侧目<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+</footer>
+
+
+    </div>
+</body>
+</html>

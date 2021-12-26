@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Ariel">
+
+
+
+
+
+<title>ISL笔记(1) | Ariel&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Ariel&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/Me">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Ariel&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/Me">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">ISL笔记(1)</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Ariel</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">九月 16, 2021&nbsp;&nbsp;16:16:57</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Statistical-Learning/">Statistical Learning</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="Contents-amp-Introduction"><a href="#Contents-amp-Introduction" class="headerlink" title="Contents &amp; Introduction"></a>Contents &amp; Introduction</h2><blockquote>
+<p>断续学习ISL(An Introduction to Statistical Learning)，笔记跟上~</p>
+</blockquote>
+<h3 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h3><h4 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h4><h4 id="2-统计学习"><a href="#2-统计学习" class="headerlink" title="2. 统计学习"></a>2. 统计学习</h4><h5 id="2-1-什么是统计学习？-Statistical-Learning"><a href="#2-1-什么是统计学习？-Statistical-Learning" class="headerlink" title="2.1 什么是统计学习？(Statistical Learning)"></a>2.1 什么是统计学习？(Statistical Learning)</h5><ul>
+<li>为什么要估计<em>f</em>值？</li>
+<li>如何估计<em>f</em>值？</li>
+<li>预测准确性和模型可解释性之间的权衡</li>
+<li>有监督和无监督学习</li>
+<li>回归和分类问题</li>
+</ul>
+<h5 id="2-2-预测模型的准确性"><a href="#2-2-预测模型的准确性" class="headerlink" title="2.2 预测模型的准确性"></a>2.2 预测模型的准确性</h5><ul>
+<li>评估拟合效果</li>
+<li>偏倚和差异的取舍</li>
+<li>分类设置</li>
+</ul>
+<h4 id="3-线性回归"><a href="#3-线性回归" class="headerlink" title="3. 线性回归"></a>3. 线性回归</h4><h5 id="3-1-简单线性回归"><a href="#3-1-简单线性回归" class="headerlink" title="3.1 简单线性回归"></a>3.1 简单线性回归</h5><ul>
+<li>计算回归系数</li>
+<li>评估回归系数的准确性</li>
+<li>评估模型的准确性</li>
+</ul>
+<h5 id="3-2-多重线性回归"><a href="#3-2-多重线性回归" class="headerlink" title="3.2 多重线性回归"></a>3.2 多重线性回归</h5><ul>
+<li>计算回归系数</li>
+<li>一些重要的问题</li>
+</ul>
+<h5 id="3-3-其他有关线性模型的考量"><a href="#3-3-其他有关线性模型的考量" class="headerlink" title="3.3 其他有关线性模型的考量"></a>3.3 其他有关线性模型的考量</h5><ul>
+<li>定量预测</li>
+<li>线性模型拓展</li>
+<li>潜在的问题</li>
+</ul>
+<h5 id="3-4-The-Marketing-Plan"><a href="#3-4-The-Marketing-Plan" class="headerlink" title="3.4 The Marketing Plan"></a>3.4 The Marketing Plan</h5><h5 id="3-5-线性回归和KNN的比较"><a href="#3-5-线性回归和KNN的比较" class="headerlink" title="3.5 线性回归和KNN的比较"></a>3.5 线性回归和KNN的比较</h5><h4 id="4-分类"><a href="#4-分类" class="headerlink" title="4. 分类"></a>4. 分类</h4><h5 id="4-1-分类问题概述"><a href="#4-1-分类问题概述" class="headerlink" title="4.1 分类问题概述"></a>4.1 分类问题概述</h5><h5 id="4-2-为什么不用线性回归"><a href="#4-2-为什么不用线性回归" class="headerlink" title="4.2 为什么不用线性回归"></a>4.2 为什么不用线性回归</h5><h5 id="4-3-逻辑回归"><a href="#4-3-逻辑回归" class="headerlink" title="4.3 逻辑回归"></a>4.3 逻辑回归</h5><ul>
+<li>Logistic模型</li>
+<li>计算回归系数</li>
+<li>预测</li>
+<li>多重逻辑回归</li>
+<li>&gt;2分类问题的逻辑回归</li>
+</ul>
+<h4 id="4-4-线性判别分析"><a href="#4-4-线性判别分析" class="headerlink" title="4.4 线性判别分析"></a>4.4 线性判别分析</h4><ul>
+<li>使用贝叶斯理论进行分类</li>
+<li><em>p=1</em>的线性判别分析</li>
+<li><em>p&gt;1</em>的线性判别分析</li>
+<li>二次判别分析</li>
+</ul>
+<h5 id="4-5-分类方法的比较"><a href="#4-5-分类方法的比较" class="headerlink" title="4.5 分类方法的比较"></a>4.5 分类方法的比较</h5><h4 id="5-重抽样方法"><a href="#5-重抽样方法" class="headerlink" title="5. 重抽样方法"></a>5. 重抽样方法</h4><h5 id="5-1-交叉验证"><a href="#5-1-交叉验证" class="headerlink" title="5.1 交叉验证"></a>5.1 交叉验证</h5><ul>
+<li>Validation Set approach</li>
+<li>留一法交叉验证</li>
+<li>K乘交叉验证</li>
+<li>Bias-Variance问题的K乘验证</li>
+<li>分类问题的交叉验证</li>
+</ul>
+<h5 id="5-2-自助法"><a href="#5-2-自助法" class="headerlink" title="5.2 自助法"></a>5.2 自助法</h5><h4 id="6-线性模型的选择和正则化"><a href="#6-线性模型的选择和正则化" class="headerlink" title="6. 线性模型的选择和正则化"></a>6. 线性模型的选择和正则化</h4><h5 id="6-1-子集选取"><a href="#6-1-子集选取" class="headerlink" title="6.1 子集选取"></a>6.1 子集选取</h5><ul>
+<li>最好的子集选取方法</li>
+<li>梯度法选择</li>
+<li>选择最优模型</li>
+</ul>
+<h5 id="6-2-Shrinkage-Methods"><a href="#6-2-Shrinkage-Methods" class="headerlink" title="6.2 Shrinkage Methods"></a>6.2 Shrinkage Methods</h5><ul>
+<li>桥回归</li>
+<li>Lasso</li>
+<li>参数选择</li>
+</ul>
+<h5 id="6-3-降维方法"><a href="#6-3-降维方法" class="headerlink" title="6.3 降维方法"></a>6.3 降维方法</h5><ul>
+<li>主成分回归</li>
+<li>Partial Least Squares</li>
+</ul>
+<h5 id="6-4-高纬度数据的考虑"><a href="#6-4-高纬度数据的考虑" class="headerlink" title="6.4 高纬度数据的考虑"></a>6.4 高纬度数据的考虑</h5><ul>
+<li>高维数据</li>
+<li>高维数据怎么了？</li>
+<li>高维数据的回归</li>
+<li>高维度的结果解释</li>
+</ul>
+<h4 id="7-线性拓展"><a href="#7-线性拓展" class="headerlink" title="7.线性拓展"></a>7.线性拓展</h4><h5 id="7-1-多项回归"><a href="#7-1-多项回归" class="headerlink" title="7.1 多项回归"></a>7.1 多项回归</h5><h5 id="7-2-step函数"><a href="#7-2-step函数" class="headerlink" title="7.2 step函数"></a>7.2 step函数</h5><h5 id="7-3-basis-函数"><a href="#7-3-basis-函数" class="headerlink" title="7.3 basis 函数"></a>7.3 basis 函数</h5><h5 id="7-4-回归曲线"><a href="#7-4-回归曲线" class="headerlink" title="7.4 回归曲线"></a>7.4 回归曲线</h5><h5 id="7-5-smooth-曲线"><a href="#7-5-smooth-曲线" class="headerlink" title="7.5 smooth 曲线"></a>7.5 smooth 曲线</h5><h5 id="7-6-局部回归"><a href="#7-6-局部回归" class="headerlink" title="7.6 局部回归"></a>7.6 局部回归</h5><h5 id="7-7-广义增量模型"><a href="#7-7-广义增量模型" class="headerlink" title="7.7 广义增量模型"></a>7.7 广义增量模型</h5><ul>
+<li>GAM的回归问题</li>
+<li>GAM的分类问题</li>
+</ul>
+<h4 id="8-基于树的方法"><a href="#8-基于树的方法" class="headerlink" title="8. 基于树的方法"></a>8. 基于树的方法</h4><h5 id="8-1-决策树的概述"><a href="#8-1-决策树的概述" class="headerlink" title="8.1 决策树的概述"></a>8.1 决策树的概述</h5><ul>
+<li>回归树</li>
+<li>分类树</li>
+<li>树和线性模型</li>
+<li>树的优劣</li>
+</ul>
+<h5 id="8-2-Bagging，随机森林和Boosting"><a href="#8-2-Bagging，随机森林和Boosting" class="headerlink" title="8.2 Bagging，随机森林和Boosting"></a>8.2 Bagging，随机森林和Boosting</h5><h4 id="9-支持向量机"><a href="#9-支持向量机" class="headerlink" title="9. 支持向量机"></a>9. 支持向量机</h4><h5 id="9-1-最大边际分类"><a href="#9-1-最大边际分类" class="headerlink" title="9.1 最大边际分类"></a>9.1 最大边际分类</h5><ul>
+<li>什么是超平面？</li>
+<li>利用分割超平面来分类</li>
+<li>最大边际分类器</li>
+<li>最大边际分类器创建</li>
+</ul>
+<h5 id="9-2-支持向量分类"><a href="#9-2-支持向量分类" class="headerlink" title="9.2 支持向量分类"></a>9.2 支持向量分类</h5><ul>
+<li>概述</li>
+<li>细节</li>
+</ul>
+<h5 id="9-3-支持向量机"><a href="#9-3-支持向量机" class="headerlink" title="9.3 支持向量机"></a>9.3 支持向量机</h5><ul>
+<li>非线性决策边界的分类</li>
+<li>支持向量机</li>
+</ul>
+<h5 id="9-4-gt-2分类的支持向量机"><a href="#9-4-gt-2分类的支持向量机" class="headerlink" title="9.4 &gt;2分类的支持向量机"></a>9.4 &gt;2分类的支持向量机</h5><ul>
+<li>One vs One分类</li>
+<li>One vs All 分类</li>
+</ul>
+<h5 id="9-5-和逻辑回归的关系"><a href="#9-5-和逻辑回归的关系" class="headerlink" title="9.5 和逻辑回归的关系"></a>9.5 和逻辑回归的关系</h5><h4 id="10-非监督学习"><a href="#10-非监督学习" class="headerlink" title="10. 非监督学习"></a>10. 非监督学习</h4><h5 id="10-1-非监督学习的挑战"><a href="#10-1-非监督学习的挑战" class="headerlink" title="10.1 非监督学习的挑战"></a>10.1 非监督学习的挑战</h5><h5 id="10-2-PCA"><a href="#10-2-PCA" class="headerlink" title="10.2 PCA"></a>10.2 PCA</h5><ul>
+<li>什么是主成分？</li>
+<li>主成分的另一种解释</li>
+<li>拓展</li>
+<li>主成分的其他应用</li>
+</ul>
+<h5 id="10-3-聚类方法"><a href="#10-3-聚类方法" class="headerlink" title="10.3 聚类方法"></a>10.3 聚类方法</h5><ul>
+<li>K-means聚类</li>
+<li>系统聚类</li>
+<li>聚类的实际问题</li>
+</ul>
+<hr>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p><strong>统计学习概述</strong></p>
+<p>统计学习指一系列用于理解数据的方法，这些方法可以分为<em>监督</em>和<em>非监督</em>两种。泛泛来说，有监督统计学习利用一个或多个输入建立统计模型来预测或估计输出，而非监督学习只有输入，而没有有监督的输出，我们只能得到这对数据的关系或者结构。</p>
+<p><strong>推断和预测</strong></p>
+<p>inference和predictions是两个术语，比如你要买一套房子，房子周边的犯罪率、地区、距离河的距离、空气质量、学校等等都可以认为是输入(predictors)，而假设你感兴趣的是<em>如果房子临河，它的价值(相比于不临河的房子)高出多少？</em>，这就是一个推断问题；假设你的问题是<em>判断这套房子是价高了还是性价比高</em>？这就是一个预测问题。简而言之，如果是判断输入的变量之间对输出的影响，那么这就是一个==推断问题==，如果问题是建立一个足够精准的模型来拟合数据，并通过输入变量来得到输出结果，那么这就是一个==预测==问题。</p>
+<blockquote>
+<p>一般来说，线性模型可以做简单并且可解释性更强的推断，但是在预测方面可能不如其他的方法；而非线性模型可以提供高质量的预测结果，但是可解释性不强，因为模型一般都很复杂。</p>
+</blockquote>
+<p><strong>有参方法和无参方法</strong></p>
+<p>有参即把问题转化为参数的估计，首先建立模型，然后利用训练集去拟合模型，得到最优解，但有参方法的最大弊端是建立的模型必须比较准确，如果一开始建立的模型就与真实模型偏差较大，那么参数预估再好也无法得到好的结果；而无参方法不在一开始就建立固定模型，但它就需要大量的观测数据来获得对输出的估计函数，无参方法的最大弊端是<em>过拟合</em>，这需要通过调整平滑度来避免。</p>
+<p><strong>模型的灵活度增加，训练集的MSE一定会减小，但是测试集的MSE就不一定</strong>。当出现较小的训练集MSE而较大的测试集MSE时，这种情况称为<strong>overfitting</strong>，过度拟合。</p>
+<img src="/images/image-20210916155000937.png" alt="image_20210702143815" style="zoom: 50%;" />
+
+<p>过度拟合出现的原因是模型纳入了一些由于随机因素导致的“特征”，而不是真实的特征。</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Ariel</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://www.tangchao.store/2021/09/16/ISL%E7%AC%94%E8%AE%B0(1)/">https://www.tangchao.store/2021/09/16/ISL%E7%AC%94%E8%AE%B0(1)/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Conquer we must, as conquer we shall.</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/09/17/%E4%B8%A4%E5%A4%84%E6%B2%89%E5%90%9F%E5%90%84%E8%87%AA%E7%9F%A5/">两处沉吟各自知</a>
+            
+            
+            <a class="next" rel="next" href="/2021/09/11/Python%20practice%20for%20three%20days_day2/">Python practice for three days----day2</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Ariel | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                你们点了<span id="busuanzi_value_site_pv"></span>下
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                侧目<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+</footer>
+
+
+    </div>
+</body>
+</html>

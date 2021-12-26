@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Ariel">
+
+
+
+
+
+<title>Python practice for three days----day1 | Ariel&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Ariel&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/Me">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Ariel&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/Me">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Python practice for three days----day1</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Ariel</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">九月 9, 2021&nbsp;&nbsp;10:48:42</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/programming/">programming</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <blockquote>
+<p>三天对python有大致了解，并且掌握一些基础概念和操作，以下内容均翻译至Jiang老师的课件，链接如下:<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/21332075">三天搞定Python - 知乎 (zhihu.com)</a></p>
+</blockquote>
+<h4 id="Outline"><a href="#Outline" class="headerlink" title="Outline"></a>Outline</h4><p><em>day1</em>：介绍Python和基础科学编程，包括数据类型、控制结构、函数和数据I/O；</p>
+<p><em>day2</em>：<strong>Numpy</strong>、<strong>Scipy</strong>、<strong>Matplotlib</strong>库的使用和利用Python解决一些数学计算问题；</p>
+<p><em>day3</em>：利用<strong>Pandas</strong>进行时间序列、统计和真实数据分析；</p>
+<h4 id="Why-Python"><a href="#Why-Python" class="headerlink" title="Why Python?"></a>Why Python?</h4><ul>
+<li>Python是一个开源软件，免费</li>
+<li>Python是一门胶水语言，这意味着Python能让你快速上手，并且相对于其他编程语言来说，Python速度相对较快</li>
+<li>Python有着庞大而活跃的社区，标准库和包都很齐全</li>
+<li>Python应用广泛（Google、NASA…）</li>
+</ul>
+<p>这里提一下Python3不能往后兼容python2，所以推荐使用python3（个人建议）</p>
+<p>python的安装以及IDLE的安装掠过；</p>
+<h4 id="Some-good-habit-in-programming"><a href="#Some-good-habit-in-programming" class="headerlink" title="Some good habit in programming"></a>Some good habit in programming</h4><ul>
+<li>坚持使用缩进和反斜杠，不要让你的脚本乱七八糟；</li>
+<li>变量命名尽量使用描述性的名称，<strong>不要</strong>随意命名变量；</li>
+<li>对代码写批注，有利于你的同伴或者将来的自己理解代码；</li>
+<li>不要同时学习多种语言；</li>
+</ul>
+<h3 id="Basic-knowledge-on-Python"><a href="#Basic-knowledge-on-Python" class="headerlink" title="Basic knowledge on Python"></a>Basic knowledge on Python</h3><h5 id="1-Common-used-numeric-data-types"><a href="#1-Common-used-numeric-data-types" class="headerlink" title="1.Common used numeric data types"></a>1.Common used numeric data types</h5><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th>Notation</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Addition</td>
+<td>+</td>
+<td>a + b</td>
+</tr>
+<tr>
+<td align="left">Subtraction</td>
+<td>-</td>
+<td>c - b</td>
+</tr>
+<tr>
+<td align="left">Multiplication</td>
+<td>*</td>
+<td>x * y</td>
+</tr>
+<tr>
+<td align="left">Division</td>
+<td>/</td>
+<td>x / z</td>
+</tr>
+<tr>
+<td align="left">Modules</td>
+<td>%</td>
+<td>x % a</td>
+</tr>
+<tr>
+<td align="left">Exponent</td>
+<td>**</td>
+<td>a ** x</td>
+</tr>
+</tbody></table>
+<p>==Exercise==</p>
+<p><code> a = 10 # int</code></p>
+<p><code>b = 3.14 # float</code></p>
+<p><code>c = 3 # int</code></p>
+<p><code>d = a**2 # square of a</code></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(d)) <span class="comment">##return type of d</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(d/<span class="number">10</span>)) <span class="comment">##return the type of d/10</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(a/b))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(a/c))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(b*d))</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-Precision-of-float"><a href="#2-Precision-of-float" class="headerlink" title="2.Precision of float"></a>2.Precision of float</h5><p>如果在控制台输入<code>0.1+0.2</code>， 你会得到<strong>0.30000000000004</strong></p>
+<p>这是由于二进制的浮点数导致，在其他任何语言你都能见到这种现象。</p>
+<p>你可以通过使用<strong>decimal</strong>函数库的round()`函数来避免：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> decimal</span><br><span class="line"><span class="built_in">print</span>(rount(<span class="number">3.1415</span>, <span class="number">2</span>)) <span class="comment">##result 3.14</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">round</span>(<span class="number">9.995</span>, <span class="number">2</span>)) <span class="comment">##result 9.99</span></span><br></pre></td></tr></table></figure>
+
+<p>==Exercise for <strong>str</strong>==</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">t = <span class="string">&#x27;He is a string. Who are you&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(t.capitalize()) <span class="comment"># Cap first letter</span></span><br><span class="line"><span class="built_in">print</span>(t.split()) <span class="comment"># split by words</span></span><br><span class="line"><span class="built_in">print</span>(t.find(<span class="string">&#x27;i&#x27;</span>)) <span class="comment"># return index of &#x27;i&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(t.find(<span class="string">&#x27;in&#x27;</span>)) <span class="comment"># return index of &#x27;i&#x27; in &#x27;in&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(t[<span class="number">0</span>:<span class="number">4</span>]) <span class="comment"># return from index 0 to 3</span></span><br><span class="line"><span class="built_in">print</span>(t.replace(<span class="string">&#x27; &#x27;</span>, <span class="string">&#x27;|&#x27;</span>)) <span class="comment"># replace by &#x27;|&#x27;</span></span><br><span class="line">w = <span class="string">&#x27;http://www.google.com&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(w.strip(<span class="string">&#x27;http://&#x27;</span>)) <span class="comment"># delete &#x27;http://&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="3-Python-features-Indexing"><a href="#3-Python-features-Indexing" class="headerlink" title="3. Python features: Indexing"></a>3. Python features: Indexing</h5><ul>
+<li>python的索引值起始为<strong>0</strong></li>
+<li>当你使用切片索引时，区间相当于左闭右开的区间，即取不到最后一个索引的值。</li>
+</ul>
+<h5 id="4-Basic-data-structures"><a href="#4-Basic-data-structures" class="headerlink" title="4.Basic data structures"></a>4.Basic data structures</h5><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Notation</th>
+<th>Declatation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Tuple</td>
+<td>tuple</td>
+<td>b = (1, 2.5, ‘data’)</td>
+</tr>
+<tr>
+<td>List</td>
+<td>llist</td>
+<td>c = [1, 2.5, ‘data’]</td>
+</tr>
+<tr>
+<td>Dictionary</td>
+<td>dict</td>
+<td>d = {‘Name’:’Kobe’, ‘Country’:’US’}</td>
+</tr>
+<tr>
+<td>Set</td>
+<td>set</td>
+<td>e = set([‘u’, ‘d’, ‘ud’, ‘du’])</td>
+</tr>
+</tbody></table>
+<ul>
+<li>tuple只有少量方法可以修改数据，而list比tuple更为灵活；</li>
+<li>dict是以键值对的形式存储数据的；</li>
+<li>集合是一个无序的不允许出现重复值的对象</li>
+</ul>
+<h5 id="5-Some-useful-functions-for-list"><a href="#5-Some-useful-functions-for-list" class="headerlink" title="5. Some useful functions for list"></a>5. Some useful functions for list</h5><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">l = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3.14</span>, <span class="string">&#x27;data&#x27;</span>] <span class="comment"># list</span></span><br><span class="line">l.append([<span class="number">4</span>, <span class="number">3</span>]) <span class="comment"># add an element</span></span><br><span class="line">l.extend([<span class="string">&#x27;delta&#x27;</span>, <span class="number">5</span>, <span class="number">6</span>]) <span class="comment"># add a list</span></span><br><span class="line">l.insert(<span class="number">3</span>, <span class="string">&#x27;beta&#x27;</span>) <span class="comment"># insert before index 3</span></span><br><span class="line">l.remove(<span class="string">&#x27;data&#x27;</span>) <span class="comment">#delete element</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="6-Python-features-Refer-for-object"><a href="#6-Python-features-Refer-for-object" class="headerlink" title="6.Python features: Refer for object"></a>6.Python features: Refer for object</h5><p>在python中，如果通过等号赋值，<code>=</code>传递的是值的地址：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = [1, 2, 3, 4]</span><br><span class="line">y = x</span><br><span class="line">y[0] = 5</span><br><span class="line">print(x)  ##[5, 2, 3, 4]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = [1, 2, 3, 4]</span><br><span class="line">z = x.copy()</span><br><span class="line">z[0] = 5</span><br><span class="line">print(x)  ##[1, 2, 3, 4]</span><br></pre></td></tr></table></figure>
+
+<p>很多资料里面讲什么深拷贝浅拷贝，反正我是没记住的，这个就好理解一点，意思就是如果使用等号赋值，那么新赋值的变量与原变量共用同一个地址，你修改其中一个变量的值另一个也会随之改变；但是使用<code>copy()</code>函数就给新变量一个新的地址，除了<strong>值</strong>一致，对新变量做修改并不会影响原变量。</p>
+<h3 id="Control-structures"><a href="#Control-structures" class="headerlink" title="Control structures"></a>Control structures</h3><h4 id="1-Conditions"><a href="#1-Conditions" class="headerlink" title="1.Conditions"></a>1.Conditions</h4><p>条件控制语句包括<em>if、else、elif</em>.</p>
+<p>对于条件比较，我们有</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Notation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>larger</td>
+<td>&gt;</td>
+</tr>
+<tr>
+<td>smaller</td>
+<td>&gt;</td>
+</tr>
+<tr>
+<td>equal</td>
+<td>==</td>
+</tr>
+<tr>
+<td>larger or equal</td>
+<td>&gt;=</td>
+</tr>
+<tr>
+<td>smaller or equal</td>
+<td>&gt;</td>
+</tr>
+<tr>
+<td>not equal</td>
+<td>!=</td>
+</tr>
+</tbody></table>
+<p>对于多重条件，我们使用<em>and</em>、<em>or</em>、<em>not</em>来连接。</p>
+<p>==Example &amp; exercise: conditions==</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">24</span>, <span class="number">16</span>, <span class="number">54</span>]</span><br><span class="line">b = []</span><br><span class="line"><span class="keyword">if</span> a[<span class="number">0</span>] &lt; a[<span class="number">1</span>] <span class="keyword">and</span> a[<span class="number">0</span>] &lt; a[<span class="number">2</span>]:</span><br><span class="line">	b.append(a[<span class="number">0</span>])</span><br><span class="line">	<span class="keyword">if</span> a[<span class="number">1</span>] &lt; a[<span class="number">2</span>]:</span><br><span class="line">		b.append(a[<span class="number">1</span>])</span><br><span class="line">		b.append(a[<span class="number">2</span>])</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		b.append(a[<span class="number">2</span>])</span><br><span class="line">		b.append(a[<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-Loops"><a href="#2-Loops" class="headerlink" title="2. Loops"></a>2. Loops</h4><ul>
+<li><p>有很多种写循环的格式和语句，这里展示两种：</p>
+<p><code>for ... in ... : statement A</code></p>
+<p><code>while ... : statement A</code></p>
+</li>
+</ul>
+<p>==Example : loops==</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, <span class="number">10</span>, <span class="number">3</span>): <span class="comment">##default step of range is 1</span></span><br><span class="line">	<span class="built_in">print</span>(i)</span><br><span class="line">	l = i**<span class="number">2</span></span><br><span class="line">	<span class="built_in">print</span>(l)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##while sum up 1 to 100</span></span><br><span class="line">a = <span class="number">0</span></span><br><span class="line">sumup = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> a &lt;= <span class="number">10</span></span><br><span class="line">	a += <span class="number">1</span></span><br><span class="line">	sumup += a</span><br><span class="line"><span class="built_in">print</span>(sumup)</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3-break-and-continue"><a href="#3-break-and-continue" class="headerlink" title="3.break and continue"></a>3.break and continue</h4><ul>
+<li><em>break</em>使用会直接跳出循环；</li>
+<li><em>continue</em>则是离开当前循环，而进入下一个循环</li>
+</ul>
+<p>eg：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##寻找在[300, 350]区间内最先被17整除的一个数</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">300</span>, <span class="number">351</span>):</span><br><span class="line">	<span class="keyword">if</span> i % <span class="number">17</span> == <span class="number">0</span>:</span><br><span class="line">		<span class="built_in">print</span>(i)</span><br><span class="line">		<span class="keyword">break</span></span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="keyword">continue</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-Loop-inside-the-loop"><a href="#4-Loop-inside-the-loop" class="headerlink" title="4.Loop inside the loop"></a>4.Loop inside the loop</h4><p>循环里面也可以套循环，注意缩进就好了</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>)：</span><br><span class="line">	<span class="built_in">print</span>(i)</span><br><span class="line">	<span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">		<span class="built_in">print</span>(j)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>==Exercises==</p>
+<ul>
+<li>计算从一到一百的累加和；</li>
+<li>计算一到一千的偶数和；</li>
+</ul>
+<hr>
+<p>&lt;这里贴出我写的练习答案~&gt;</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1</span></span><br><span class="line">sumadd = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> a &lt;= <span class="number">1000</span>:</span><br><span class="line">    <span class="keyword">if</span> a % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        sumadd += a</span><br><span class="line">    a += <span class="number">1</span>   </span><br><span class="line"><span class="built_in">print</span>(sumadd)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h3><p>函数的格式是：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">TheNameOfFunction</span>(<span class="params">para1, para2</span>) :</span></span><br><span class="line">	...</span><br><span class="line">	<span class="keyword">return</span> Outcome</span><br></pre></td></tr></table></figure>
+
+<p>==Example==</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def MaxOfTwo(x1, x2)</span><br><span class="line">	if x1 &gt;= x2:</span><br><span class="line">		return x1</span><br><span class="line">	else:</span><br><span class="line">		return x2</span><br><span class="line">a = 1</span><br><span class="line">b = 2</span><br><span class="line">c = MaxOfTwo(a, b)</span><br><span class="line">print(c)</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-Default-arguments"><a href="#1-Default-arguments" class="headerlink" title="1.Default arguments"></a>1.Default arguments</h4><ul>
+<li>python函数里没有函数重载，所以不能有两个同名的函数，但是操作符重载是可以的；</li>
+<li>你可以在定义函数时提供默认参数值，但是注意默认参数值放在函数argument的最后。</li>
+</ul>
+<h4 id="2-Functions-with-two-outputs"><a href="#2-Functions-with-two-outputs" class="headerlink" title="2.Functions with two outputs"></a>2.Functions with two outputs</h4><p>函数也可以输出多个变量：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span>(<span class="params">x1, x2, x3, ...</span>) :</span></span><br><span class="line">	......</span><br><span class="line">	<span class="keyword">return</span> (y1, y2, y3, ...)</span><br><span class="line">a1, b1, c1 = f(...)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Reading-writing-files"><a href="#Reading-writing-files" class="headerlink" title="Reading/writing files"></a>Reading/writing files</h3><h4 id="1-Built-in-open-functions"><a href="#1-Built-in-open-functions" class="headerlink" title="1.Built-in open() functions"></a>1.Built-in open() functions</h4><p>我们可以通过内置的<em>open()<em>函数来打开文件，</em>open</em>返回一个文件对象，最常使用两个参数:</p>
+<p>​    <code>file_object = open(filename, mode)</code></p>
+<p><code>mode</code>可以是：</p>
+<ul>
+<li>‘r’：表示只读；</li>
+<li>‘w’：表示只写，当存在同名文件时旧文件会被重写；</li>
+<li>‘a’：打开文件进行追加，任何数据都会自动被追加到文末；</li>
+<li>‘r+’：可读可写；</li>
+</ul>
+<h4 id="2-Creating-a-new-file"><a href="#2-Creating-a-new-file" class="headerlink" title="2. Creating a new file"></a>2. Creating a new file</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">file = <span class="built_in">open</span>(<span class="string">&#x27;newfile.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>)</span><br><span class="line">file.write(<span class="string">&#x27;I am created for the course. \n&#x27;</span>)</span><br><span class="line">file.write(<span class="string">&#x27;How about you?&#x27;</span>)</span><br><span class="line">file.write(<span class="string">&#x27;How is your exam&#x27;</span>)</span><br><span class="line">file.close()</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-Reading-a-file"><a href="#3-Reading-a-file" class="headerlink" title="3.Reading a file"></a>3.Reading a file</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">file = <span class="built_in">open</span>(<span class="string">&#x27;newfile.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>)</span><br><span class="line"><span class="comment"># show whole file</span></span><br><span class="line"><span class="built_in">print</span>(file.read)</span><br><span class="line"><span class="comment"># show first ten charactors</span></span><br><span class="line"><span class="built_in">print</span>(file.read(<span class="number">10</span>))</span><br><span class="line"><span class="comment"># view by line </span></span><br><span class="line"><span class="built_in">print</span>(file.readline())</span><br><span class="line"><span class="comment"># view all by line</span></span><br><span class="line"><span class="built_in">print</span>(file.readlines())</span><br><span class="line">file.close()</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-Looping-over-a-file-object"><a href="#4-Looping-over-a-file-object" class="headerlink" title="4. Looping over a file object"></a>4. Looping over a file object</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">file = <span class="built_in">open</span>(<span class="string">&#x27;newfile.txt&#x27;</span>, <span class="string">&#x27;r+&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> file:</span><br><span class="line">	<span class="built_in">print</span>(line)</span><br><span class="line">file.close()</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-Adding-in-a-file"><a href="#5-Adding-in-a-file" class="headerlink" title="5.Adding in a file"></a>5.Adding in a file</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">file = <span class="built_in">open</span>(<span class="string">&#x27;newfile.txt&#x27;</span>, <span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">file.write(<span class="string">&#x27;\nI am back again. \n&#x27;</span>)</span><br><span class="line">file.write(<span class="string">&#x27;Do you miss me?&#x27;</span>\n)</span><br><span class="line">file.close()</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-The-with-statement"><a href="#6-The-with-statement" class="headerlink" title="6. The with statement"></a>6. The with statement</h4><p>注意到每次读取文件最后都会要关闭文件<code>file.close()</code> , 以防忘记，可以使用<code>with()</code>语句。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;filename.txt&#x27;</span>) <span class="keyword">as</span> f :</span><br><span class="line">	......</span><br></pre></td></tr></table></figure>
+
+<p>这样可以不需要close文件。文件名可以是全路径，但是MAC和windows中的反斜杠方向不一样，在win中要写两次反斜杠来消除反斜杠的反义作用。</p>
+<p>==Final exercise==</p>
+<ol>
+<li>给定一个list，对列表元素从大到小排序，返回排序后的列表</li>
+<li>斐波那契数列</li>
+</ol>
+<hr>
+<p>依然贴出我的练习答案：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">lst = [<span class="number">8</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">9</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sortlist</span>(<span class="params">lst</span>):</span></span><br><span class="line">    n = <span class="built_in">len</span>(lst)</span><br><span class="line">    lst[lst.index(<span class="built_in">max</span>(lst))], lst[<span class="number">0</span>] = lst[<span class="number">0</span>], <span class="built_in">max</span>(lst)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n):</span><br><span class="line">        lst[lst.index(<span class="built_in">max</span>(lst[i:n]))], lst[i] = lst[i], <span class="built_in">max</span>(lst[i:n])</span><br><span class="line">    <span class="keyword">return</span> lst</span><br><span class="line"></span><br><span class="line">sortlist(lst)   </span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a0=<span class="number">1</span></span><br><span class="line">a1=<span class="number">1</span></span><br><span class="line">n = <span class="number">10</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">recur</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> recur(n-<span class="number">1</span>) + recur(n-<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>第一天主要是直观的认识了python的基本数据结构和控制结构，写完发现我大概只是PPT的搬运工。。。本意是想翻译来着。。。(〃￣︶￣)人(￣︶￣〃)</strong></p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Ariel</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://www.tangchao.store/2021/09/09/Python%20practice%20for%20three%20days_day1/">https://www.tangchao.store/2021/09/09/Python%20practice%20for%20three%20days_day1/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Conquer we must, as conquer we shall.</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/Python/"># Python</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/09/09/R%E5%B9%B6%E8%A1%8C%E5%8C%85%E4%B9%8B%E2%80%94%E2%80%94parallel%E3%80%81foreach/"></a>
+            
+            
+            <a class="next" rel="next" href="/2021/09/07/%E5%90%84%E7%A7%8D%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A/">各种名词解释</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Ariel | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                你们点了<span id="busuanzi_value_site_pv"></span>下
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                侧目<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+</footer>
+
+
+    </div>
+</body>
+</html>
