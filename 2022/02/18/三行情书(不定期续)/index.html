@@ -12,7 +12,7 @@
 
 
 
-<title>想他 | Ariel&#39;s blog</title>
+<title>三行情书(不定期续) | Ariel&#39;s blog</title>
 
 
 
@@ -107,11 +107,73 @@
             <div class="container">
     
     
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
 
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">想他</h1>
+            <h1 class="post-title">三行情书(不定期续)</h1>
             
                 <div class="post-meta">
                     
@@ -120,7 +182,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">二月 10, 2022&nbsp;&nbsp;15:14:33</a>
+                        Date: <a href="#">二月 18, 2022&nbsp;&nbsp;20:12:54</a>
                         </span>
                     
                     
@@ -136,10 +198,21 @@
         </header>
 
         <div class="post-content">
-            <p>离开他的第三天，</p>
-<p>视频的第三天，</p>
-<p>想他，想他，十分想他。😭😭</p>
-<img src="/images/image-20220210151348273.png" alt="image-20220210151348273" style="zoom: 25%;" />
+            <h4 id="你的声音"><a href="#你的声音" class="headerlink" title="你的声音"></a>你的声音</h4><p>你有两种声音</p>
+<p>在我耳畔的低语</p>
+<p>和我头顶的沉默</p>
+<h4 id="漫游"><a href="#漫游" class="headerlink" title="漫游"></a>漫游</h4><p>就在刚刚过去的一秒里</p>
+<p>我已经把你想了三遍</p>
+<p>只是想你而已</p>
+<h4 id="不合时宜"><a href="#不合时宜" class="headerlink" title="不合时宜"></a>不合时宜</h4><p>我坐在自己身边</p>
+<p>像一只鸟落在树梢</p>
+<p>安静看你</p>
+<h4 id="落雨"><a href="#落雨" class="headerlink" title="落雨"></a>落雨</h4><p>你在一年的四个季节中有两个季节都在思念她</p>
+<p>还不包括下雨天</p>
+<p>你真的就不记得我了？</p>
+<h4 id="事后"><a href="#事后" class="headerlink" title="事后"></a>事后</h4><p>事后 你背对着我沉睡</p>
+<p>四周沉寂</p>
+<p>全然不知我们做过的事 说过的话</p>
 
         </div>
 
@@ -154,7 +227,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://www.tangchao.store/2022/02/10/%E6%83%B3%E4%BB%96/">https://www.tangchao.store/2022/02/10/%E6%83%B3%E4%BB%96/</a></span>
+                        <span><a href="https://www.tangchao.store/2022/02/18/%E4%B8%89%E8%A1%8C%E6%83%85%E4%B9%A6(%E4%B8%8D%E5%AE%9A%E6%9C%9F%E7%BB%AD)/">https://www.tangchao.store/2022/02/18/%E4%B8%89%E8%A1%8C%E6%83%85%E4%B9%A6(%E4%B8%8D%E5%AE%9A%E6%9C%9F%E7%BB%AD)/</a></span>
                     </p>
                 
                 
@@ -187,10 +260,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2022/02/18/%E4%B8%89%E8%A1%8C%E6%83%85%E4%B9%A6(%E4%B8%8D%E5%AE%9A%E6%9C%9F%E7%BB%AD)/">三行情书(不定期续)</a>
             
-            
-            <a class="next" rel="next" href="/2022/01/01/%E6%B2%89%E6%80%9D-%E7%9C%81%E8%BA%AB(2021)/">2021的一点思考</a>
+            <a class="next" rel="next" href="/2022/02/10/%E6%83%B3%E4%BB%96/">想他</a>
             
         </section>
 
