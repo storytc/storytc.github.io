@@ -12,7 +12,7 @@
 
 
 
-<title>此时相望不相闻，愿逐月华流照君 | Ariel&#39;s blog</title>
+<title>LaTex_index_four | Ariel&#39;s blog</title>
 
 
 
@@ -107,11 +107,73 @@
             <div class="container">
     
     
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
 
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">此时相望不相闻，愿逐月华流照君</h1>
+            <h1 class="post-title">LaTex_index_four</h1>
             
                 <div class="post-meta">
                     
@@ -120,14 +182,14 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">二月 21, 2022&nbsp;&nbsp;14:25:58</a>
+                        Date: <a href="#">二月 24, 2022&nbsp;&nbsp;20:34:35</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/%E6%89%AF%E7%8A%8A%E5%AD%90/">扯犊子</a>
+                                <a href="/categories/programming/">programming</a>
                             
                         </span>
                     
@@ -136,8 +198,32 @@
         </header>
 
         <div class="post-content">
-            <p>或许我的反射弧真的是太长了<br>不敢提笔，却总在回忆。<br>可是错过的真的只是那些犹豫的时间和契机吗？就像我们处人世中挣扎奔跑，囿于周遭困局，混沌之后却没有激起宇宙的一丝涟漪。<br>浪子安顿下来也可以是感情很稳定的人，餍足于三餐四季与温柔怀抱。不会有人知道他放弃了些什么，也不能完全明了他从中获得的赤子新生命，因为真正的快乐是从克制和清醒的认识中来的。<br>我近日购入了很多毛笔和字帖，要练习的实在太多，这些时光一样是煎熬，不过是忍耐着，努力做到朋友评价我“坚韧”的特性。<br>想起奥修说，喜欢一个人，一定不要把他放到婚姻里去。但霍乱时期的爱情却让我看到了另一种态度，许是不同的时代反映的观感吧。古人用一生的时间去思念一个人，可是如今这一生对快时代的人来说也许漫长了些，一生怀念一人带来的满足感已经有了琳琅满目的替代选择。当时和我在一起的人，如今彼此已音信全无，此生相见也许就是为了完成一次选择。对比此时境况与过去种种，可见人类的悲欢并不相通。在清朗的月光下，在瓢泼的大雨中，我们有不同的歌，不同的记忆。</p>
-<img src="/images/image-20220221191531910.png" alt="image-20220221191531910" style="zoom: 25%;" />
+            <p><em>而月色皎洁</em></p>
+<p><em>我不适宜肝肠寸断～</em></p>
+<p><em>请相信，一定会有人在默默爱着你～</em></p>
+<blockquote>
+<p>今天来更一章(目录添加)吼吼～</p>
+</blockquote>
+<h3 id="Generate-a-table-of-contents"><a href="#Generate-a-table-of-contents" class="headerlink" title="Generate a table of contents"></a>Generate a table of contents</h3><h4 id="Table-of-contents"><a href="#Table-of-contents" class="headerlink" title="Table of contents"></a>Table of contents</h4><p>Latex use <code>section</code> headings to generate a basic contents. Look at the code below:</p>
+<img src="/images/image-20220224195412432.png" alt="image-20220224195412432" style="zoom: 33%;" />
+
+<p>Then you’ll get the result looks like:</p>
+<img src="/images/image-20220224195503570.png" alt="image-20220224195503570" style="zoom:33%;" />
+
+<p>It contain two pages and one of it is a table of contents.</p>
+<h4 id="Depth"><a href="#Depth" class="headerlink" title="Depth"></a>Depth</h4><p>Sometimes maybe you’ll want to hide the subsections or part of it, you can set <em>tocdepth</em> by the command <code>\setcounter&#123;tocdepth&#125;&#123;X&#125;</code> where <strong>X</strong> is the desired depth. For example:</p>
+<img src="/images/image-20220224200830026.png" alt="image-20220224200830026" style="zoom:33%;" />
+
+<img src="/images/image-20220224200848003.png" alt="image-20220224200848003" style="zoom:33%;" />
+
+<p>Whoops!  While the number within parentheses means the depth: <strong>1</strong>=show sections; <strong>2</strong>=show subsections; <strong>3</strong>=show subsubsections;<strong>4</strong>=show paragraphs;<strong>5</strong>=show subparagraphs.</p>
+<p>And if you want to reserve some depths for some sections, you can also adjust the <em>tocdepth</em> for each sections individually.</p>
+<h4 id="Spacing"><a href="#Spacing" class="headerlink" title="Spacing"></a>Spacing</h4><p>Change the spacing between sections with the package <strong>setspace</strong>.</p>
+<img src="/images/image-20220224202419951.png" alt="image-20220224202419951" style="zoom:33%;" />
+
+<p>You can observe that there are double spacing between sections while single spacing between subsections.</p>
+<img src="/images/image-20220224202542353.png" alt="image-20220224202542353" style="zoom:33%;" />
+
 
         </div>
 
@@ -152,7 +238,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://www.tangchao.store/2022/02/21/%E6%AD%A4%E6%97%B6%E7%9B%B8%E6%9C%9B%E4%B8%8D%E7%9B%B8%E9%97%BB%EF%BC%8C%E6%84%BF%E9%80%90%E6%9C%88%E5%8D%8E%E6%B5%81%E7%85%A7%E5%90%9B/">https://www.tangchao.store/2022/02/21/%E6%AD%A4%E6%97%B6%E7%9B%B8%E6%9C%9B%E4%B8%8D%E7%9B%B8%E9%97%BB%EF%BC%8C%E6%84%BF%E9%80%90%E6%9C%88%E5%8D%8E%E6%B5%81%E7%85%A7%E5%90%9B/</a></span>
+                        <span><a href="https://www.tangchao.store/2022/02/24/latex_index_four/">https://www.tangchao.store/2022/02/24/latex_index_four/</a></span>
                     </p>
                 
                 
@@ -185,10 +271,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2022/02/24/latex_index_four/">LaTex_index_four</a>
             
-            
-            <a class="next" rel="next" href="/2022/02/18/%E5%A6%82%E5%9B%BE/">如图</a>
+            <a class="next" rel="next" href="/2022/02/21/%E6%AD%A4%E6%97%B6%E7%9B%B8%E6%9C%9B%E4%B8%8D%E7%9B%B8%E9%97%BB%EF%BC%8C%E6%84%BF%E9%80%90%E6%9C%88%E5%8D%8E%E6%B5%81%E7%85%A7%E5%90%9B/">此时相望不相闻，愿逐月华流照君</a>
             
         </section>
 
