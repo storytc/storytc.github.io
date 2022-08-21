@@ -12,7 +12,7 @@
 
 
 
-<title>周记之最不屑一顾是相思 | Ariel&#39;s blog</title>
+<title>Hypergeometric test | Ariel&#39;s blog</title>
 
 
 
@@ -111,7 +111,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">周记之最不屑一顾是相思</h1>
+            <h1 class="post-title">Hypergeometric test</h1>
             
                 <div class="post-meta">
                     
@@ -120,14 +120,14 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">八月 10, 2022&nbsp;&nbsp;18:47:05</a>
+                        Date: <a href="#">八月 21, 2022&nbsp;&nbsp;20:48:11</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/%E5%91%A8%E8%AE%B0/">周记</a>
+                                <a href="/categories/Statistical-Learning/">Statistical Learning</a>
                             
                         </span>
                     
@@ -136,58 +136,30 @@
         </header>
 
         <div class="post-content">
-            <p><strong>Aug, 6th, 2022</strong></p>
-<p><strong>梦的解析解</strong></p>
-<p>有人相信梦的先知意义，</p>
-<p>有人嗤笑梦的毫无意义，</p>
-<p>还有人，</p>
-<p>紧紧抓住梦的幻影不放手。</p>
-<p>因为，</p>
-<p>对那些渴望再见一面却再也没有机会的人，</p>
-<p>只能双手合十祈拜上天，</p>
-<p>今夜入梦一见。</p>
-<p>你从不骗我说离开之后会变成守护我的星星，</p>
-<p>你也知道我不会相信，</p>
-<p>我光知道流泪罢了。</p>
-<hr>
-<p><strong>Aug, 8th, 2022</strong></p>
-<p>关于爱情的一点想法</p>
+            <p>超几何分布检验(Hypergeometric test)</p>
 <blockquote>
-<p>第一次牵手想在人来人往的街头，好让热烈的喧闹声掩过我更加热烈的心跳；第一次拥抱想在不经意间和你撞个满怀，然后轻轻拥住你的宽大T恤；第一次接吻想在月亮和星星都很美的夜晚，温温柔柔不带情欲；婚前想独自一人旅旅游，和你分享旅途中的一切壮阔与渺小；婚后想和你一起旅游，在你的唇齿下嘲笑如画风景；生前想尝试各种职业与生活，一次生命，百态人生；死后想安安静静地定居，和你葬在最初相遇的地方。</p>
+<p>因为最近自己做了几遍富集分析，但是每次都记不住参数的几个值代表意义，所以记录一下，免得下次又要去google🥸</p>
 </blockquote>
-<p>这是几年前的想法了，如今依然是。这种“不忘初心”不是不知变通，更多的可能是经过时间打磨之后的坚守吧。</p>
-<p>君子无终食之间违仁，造次必于是，颠沛必于是。</p>
-<hr>
-<p><strong>Aug, 9th, 2022</strong></p>
-<p><strong>一场秋雨一场寒</strong></p>
-<p>她穿着短裙，</p>
-<p>他穿着短袖，</p>
-<p>她在开心的吃西瓜，</p>
-<p>他在悠闲地写代码，</p>
-<p>只有我，</p>
-<p>在我那脆弱的温感系统下，</p>
-<p>立毛肌收缩，</p>
-<p>牙齿发出规律地颤栗声，</p>
-<p>神志不清，</p>
-<p>仰灯大喊：</p>
-<p>我的膘，</p>
-<p>为何如此特别？</p>
-<p>除了摆看，</p>
-<p>卵用没有。</p>
-<hr>
-<p>Aug, 10th, 2022</p>
+<p>是的，超几何分布检验跟超几何分布是有密切关系的，超几何分布检验就是基于实验结果分布服从超几何分布的假设进行的，别名Fisher精确检验hh。我们知道bernouli实验是基于一次实验结果的分布，而多次bernouli实验则定义为二项分布，二项分布、几何分布和超几何分布都是离散型分布，区别是二项分布和几何分布是有放回的抽样，因此每个类别变量的概率在实验过程中是恒定的，而超几何分布是不放回抽样，也就是每抽一次，下一次抽样的类别概率是发生变化的。</p>
+<p>应用到生物信息中，最常见的即分析某部分基因是否显著富集到某个通路上。我们假设总共有10000个基因，其中通路基因占200个，现随机从10000个基因里抽取1000个基因(比如1000个DEGs)，其中有50个基因和该通路的基因重合，那么这部分基因是否富集到该通路？</p>
+<p>首先我们来看超几何分布检验的公式：</p>
+<img src="/images/image-20220821200701252.png" alt="image-20220821200701252" style="zoom:50%;" />
+
+<p>可以看到有<strong>四个参数</strong>：<strong>N，n，M，k</strong></p>
+<p><em>咱也不是统计人我就直接套娃吧</em>：</p>
+<p><strong>N</strong>就是总体个数，即10000个基因；</p>
+<p><strong>n</strong>是样本个数，即抽取的1000个基因；</p>
+<p><strong>k</strong>是抽取的样本与通路基因重合的个数即50；</p>
+<p><strong>M</strong>为总体与通路基因重合的个数即200；</p>
+<p>R中进行计算：</p>
+<p><code>phyper(k-1, M，N-M，n，lower.tail=FALSE)</code>或</p>
+<p><code>1-phyper(k-1, M，N-M，n，lower.tail=TRUE)</code></p>
+<p>再详细一点介绍：</p>
+<p>实际上我们可以这样考虑，在通路基因为少数的情况下，通路基因与抽取基因的重合率越高，这种情况其实发生的概率越小。如果<em>重合的基因数很高</em>，有可能是假阳性，那么为了判断是否是假阳性或者说是随机事件，现在计算重合的基因数大于这个<em>很高的基因数</em>的概率，如果这个概率很小，那么就说明这个事件不是随机的，因此得出显著性高即这部分抽取基因显著富集该通路的结论。</p>
+<p>从给出的两种R计算方法可以看出有差别的地方是参数<code>lower.tail</code>的设置，这个参数默认为TRUE，在R给出的说明里明白的写着：if TRUE，probabilities are P[X&lt;=x], otherwise，P[X&gt;x]。也就是说，当设置为TRUE，则关心左边的那部分，也就是<strong>重合的基因数小于等于这个很高的基因数的概率</strong>，那么显著性我们就是用1-P表示；当设置为FALSE，也就是<strong>重合的基因数大于这个很高的基因数的概率</strong>，那么显著性即为得到的P值。返回的概率实际上是<strong>累计P值</strong>。</p>
 <blockquote>
-<p>如果你不快乐，那是因为你把事情看得太严肃了。</p>
-<p>​                                                                                ——奥修</p>
+<p>一个遗留问题是我不晓得为什么是k-1？？查到了再补充。</p>
 </blockquote>
-<p>组合学了两次了，这周六一定要跳得好看啊啊啊！！！</p>
-<p>还不会发视频，所以先这样……🥰🥰</p>
-<img src="/images/image-20220810184236322.png" alt="image-20220810184236322" style="zoom:25%;" />
-
-<img src="/images/image-20220810184249649.png" alt="image-20220810184249649" style="zoom:25%;" />
-
-
-
 
         </div>
 
@@ -202,7 +174,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://www.tangchao.store/2022/08/10/%E5%91%A8%E8%AE%B0%E4%B9%8B%E6%9C%80%E4%B8%8D%E5%B1%91%E4%B8%80%E9%A1%BE%E6%98%AF%E7%9B%B8%E6%80%9D/">https://www.tangchao.store/2022/08/10/%E5%91%A8%E8%AE%B0%E4%B9%8B%E6%9C%80%E4%B8%8D%E5%B1%91%E4%B8%80%E9%A1%BE%E6%98%AF%E7%9B%B8%E6%80%9D/</a></span>
+                        <span><a href="https://www.tangchao.store/2022/08/21/Hypergeometric%20test/">https://www.tangchao.store/2022/08/21/Hypergeometric%20test/</a></span>
                     </p>
                 
                 
@@ -235,10 +207,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2022/08/21/Hypergeometric%20test/">Hypergeometric test</a>
             
-            
-            <a class="next" rel="next" href="/2022/08/03/%E5%91%A8%E8%AE%B0%E4%B9%8B%E4%BA%A2%E9%BE%99%E6%9C%89%E6%82%94/">周记之亢龙有悔</a>
+            <a class="next" rel="next" href="/2022/08/10/%E5%91%A8%E8%AE%B0%E4%B9%8B%E6%9C%80%E4%B8%8D%E5%B1%91%E4%B8%80%E9%A1%BE%E6%98%AF%E7%9B%B8%E6%80%9D/">周记之最不屑一顾是相思</a>
             
         </section>
 
