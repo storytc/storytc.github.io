@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.tangchao.store/2023/02/16/%E5%91%A8%E8%AE%B0%E4%B9%8B%E6%AC%B2%E5%B0%86%E5%BF%83%E4%BA%8B%E4%BB%98%E7%91%B6%E7%90%B4/</loc>
+    
+    <lastmod>2023-02-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.tangchao.store/2023/01/27/%E5%91%A8%E8%AE%B0%E4%B9%8B%E6%97%A5%E8%90%BD/</loc>
     
     <lastmod>2023-01-27</lastmod>
@@ -445,7 +454,7 @@
 
   <url>
     <loc>https://www.tangchao.store/</loc>
-    <lastmod>2023-01-27</lastmod>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -453,14 +462,14 @@
   
   <url>
     <loc>https://www.tangchao.store/tags/Python/</loc>
-    <lastmod>2023-01-27</lastmod>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.tangchao.store/tags/R/</loc>
-    <lastmod>2023-01-27</lastmod>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -469,77 +478,77 @@
   
   <url>
     <loc>https://www.tangchao.store/categories/programming/</loc>
-    <lastmod>2023-01-27</lastmod>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.tangchao.store/categories/Statistical-Learning/</loc>
-    <lastmod>2023-01-27</lastmod>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.tangchao.store/categories/html/</loc>
-    <lastmod>2023-01-27</lastmod>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.tangchao.store/categories/seq-data-processing-app-learning/</loc>
-    <lastmod>2023-01-27</lastmod>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.tangchao.store/categories/Machine-learning/</loc>
-    <lastmod>2023-01-27</lastmod>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.tangchao.store/categories/%E6%89%AF%E7%8A%8A%E5%AD%90/</loc>
-    <lastmod>2023-01-27</lastmod>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.tangchao.store/categories/brief-bioinfor/</loc>
-    <lastmod>2023-01-27</lastmod>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.tangchao.store/categories/%E5%81%87%E6%AD%A3%E7%BB%8F/</loc>
-    <lastmod>2023-01-27</lastmod>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.tangchao.store/categories/RNA-seq-analysis/</loc>
-    <lastmod>2023-01-27</lastmod>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.tangchao.store/categories/foreign-language/</loc>
-    <lastmod>2023-01-27</lastmod>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.tangchao.store/categories/%E5%91%A8%E8%AE%B0/</loc>
-    <lastmod>2023-01-27</lastmod>
+    <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
