@@ -12,7 +12,7 @@
 
 
 
-<title>周记之晓看天色暮看云 | Ariel&#39;s blog</title>
+<title>Git和Github托管代码 | Ariel&#39;s blog</title>
 
 
 
@@ -111,7 +111,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">周记之晓看天色暮看云</h1>
+            <h1 class="post-title">Git和Github托管代码</h1>
             
                 <div class="post-meta">
                     
@@ -120,14 +120,14 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">七月 4, 2023&nbsp;&nbsp;10:28:28</a>
+                        Date: <a href="#">七月 30, 2023&nbsp;&nbsp;12:02:45</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/%E5%91%A8%E8%AE%B0/">周记</a>
+                                <a href="/categories/Bioinformatics/">Bioinformatics</a>
                             
                         </span>
                     
@@ -136,24 +136,91 @@
         </header>
 
         <div class="post-content">
-            <p><strong>Oct，7th，2022</strong></p>
-<p>国庆小长假马上就结束了。</p>
-<p>但我一直有一个疑问🤔️，国庆真的不是只放三天假吗？？？</p>
-<p>新的浪冲板到了，昨晚浅滑了一下，真香。是的，想念和新朋友们一起滑板的时光了。</p>
-<p>我从前一直不知道该怎么去描述你给我的这种奇怪感觉，后来我找到了一个词，伪善。我不知道群体心理学有没有这种名词去描述一种现象是：给予普通人的人性以宽容，而对看起来善良无比的人的人性缺陷却痛恨无比。我明白是我的问题，因此每当我有情绪波动时就会在心里默念“荷兰佬！荷兰佬！”。《温泉疗养客》里说，“我要做的只是去实践‘爱你的仇敌’这句名言”，我要得到解脱，唯一的法子就是爱我的仇敌。</p>
-<p><strong>Oct，10th， 2022</strong></p>
-<p>草丛里一阵窸窣，</p>
-<p>你突然出现，</p>
-<p>却不让我看见。</p>
-<p>嘿，伙计</p>
-<p>叫你黑团子怎么样？</p>
-<p>风又起了，</p>
-<p>你躲到更深处，</p>
-<p>花有花的去处，</p>
-<p>但你没有归途。</p>
-<p><strong>Oct，14th，2022</strong></p>
-<img src="/images/image-20221016094051486.png" alt="image-20221016094051486" style="zoom:25%;" />
+            <img src="/images/image-20230730111634256.png" alt="image-20230615143844629" style="zoom: 80%;" />
 
+<img src="/images/image-20230730112009338.png" alt="image-20230615143844629" style="zoom: 80%;" />
+
+
+
+<p><strong>1. 提交本地代码</strong></p>
+<blockquote>
+<p>这一步添加要上传的文件/目录到暂存区</p>
+</blockquote>
+<ul>
+<li>git add <em>filename</em></li>
+</ul>
+<blockquote>
+<p>这一步给暂存区生成快照并提交</p>
+</blockquote>
+<ul>
+<li>git commit -m ‘filename/description’</li>
+</ul>
+<blockquote>
+<p>提交至远程仓库</p>
+</blockquote>
+<ul>
+<li>git push origin master #具体分支根据需求更改</li>
+</ul>
+<p><strong>2. 其他命令</strong></p>
+<blockquote>
+<p>查看状态</p>
+</blockquote>
+<ul>
+<li>git status</li>
+</ul>
+<blockquote>
+<p>查看历史提交信息</p>
+</blockquote>
+<ul>
+<li>git log</li>
+</ul>
+<blockquote>
+<p>分支的用法</p>
+</blockquote>
+<ul>
+<li><p>git branch  #查看分支</p>
+</li>
+<li><p>git branch -a #查看所有分支</p>
+</li>
+<li><p>git branch -l #查看本地分支</p>
+</li>
+<li><p>git branch name  #创建本地name分支</p>
+</li>
+<li><p>git checkout name  #切换到name分支</p>
+</li>
+<li><p>git checkout -b name #创建一个新的本地分支并切换到新分支</p>
+</li>
+<li><p>git push origin name #将新本地分支推送至远程</p>
+</li>
+<li><p>git branch -d name #删除本地name分支</p>
+</li>
+<li><p>git push origin :name #删除远程name分支</p>
+</li>
+</ul>
+<blockquote>
+<p>更新本地仓库至最新改动</p>
+</blockquote>
+<ul>
+<li>git pull</li>
+</ul>
+<blockquote>
+<p>内建的图形化git：</p>
+</blockquote>
+<ul>
+<li>gitk</li>
+</ul>
+<blockquote>
+<p>恢复到上一个版本</p>
+</blockquote>
+<ul>
+<li>git reset –hard HEAD^</li>
+</ul>
+<blockquote>
+<p>显示版本差异</p>
+</blockquote>
+<ul>
+<li>git diff #主要是显示暂存区与缓存区的修改</li>
+</ul>
 
         </div>
 
@@ -168,7 +235,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://www.tangchao.store/2023/07/04/%E5%91%A8%E8%AE%B0%E4%B9%8B%E6%99%93%E7%9C%8B%E5%A4%A9%E8%89%B2%E6%9A%AE%E7%9C%8B%E4%BA%91/">https://www.tangchao.store/2023/07/04/%E5%91%A8%E8%AE%B0%E4%B9%8B%E6%99%93%E7%9C%8B%E5%A4%A9%E8%89%B2%E6%9A%AE%E7%9C%8B%E4%BA%91/</a></span>
+                        <span><a href="https://www.tangchao.store/2023/07/30/Git%E5%92%8CGithub%E6%89%98%E7%AE%A1%E4%BB%A3%E7%A0%81/">https://www.tangchao.store/2023/07/30/Git%E5%92%8CGithub%E6%89%98%E7%AE%A1%E4%BB%A3%E7%A0%81/</a></span>
                     </p>
                 
                 
@@ -201,10 +268,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2023/07/30/Git%E5%92%8CGithub%E6%89%98%E7%AE%A1%E4%BB%A3%E7%A0%81/">Git和Github托管代码</a>
             
-            
-            <a class="next" rel="next" href="/2023/07/04/NVIM%E7%9A%84%E4%B8%80%E4%BA%9B%E5%BF%AB%E6%8D%B7%E9%94%AE/">NVIM的一些快捷键</a>
+            <a class="next" rel="next" href="/2023/07/04/%E5%91%A8%E8%AE%B0%E4%B9%8B%E6%99%93%E7%9C%8B%E5%A4%A9%E8%89%B2%E6%9A%AE%E7%9C%8B%E4%BA%91/">周记之晓看天色暮看云</a>
             
         </section>
 
