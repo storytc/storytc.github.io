@@ -66,10 +66,86 @@ redirect_from:
     border-top: 1px solid #fafafa;
     padding-top: 10px;
 }
+
+/* 1. 大容器设置 */
+.side-by-side-container {
+    display: flex;          /* 开启弹性布局 */
+    flex-wrap: wrap;        /* 关键：空间不足时自动换行 */
+    gap: 20px;              /* 两个盒子之间的间距 */
+    width: 100%;
+    margin: 20px 0;
+}
+
+/* 2. 两个小盒子的基础样式 */
+.info-box {
+    flex: 1;                /* 默认在有空间时平分宽度 */
+    min-width: 300px;       /* 关键：当屏幕宽度小于这个值时，强制换行 */
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* 3. 内部文字排版 */
+.info-title {
+    margin-top: 0;
+    color: #007bff;
+    border-bottom: 2px solid #e7f3ff;
+    padding-bottom: 8px;
+    font-size: 1.25rem;
+}
+
+.info-list {
+    list-style: none;       /* 去掉默认圆点 */
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.info-list li {
+    margin-bottom: 10px;
+    line-height: 1.5;
+    color: #444;
+    position: relative;
+    padding-left: 15px;
+}
+
+/* 自定义小圆点 */
+.info-list li::before {
+    content: "•";
+    color: #007bff;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
 </style>
 
+<p style='font-size:2rem;text-align:justify;line-height:2'>Greetings! I'm currently a final-year Ph.D. student at Peking Union Medical College, specializing in stem cell biology and computational biology. My research focuses on unraveling hematopoietic stem cell heterogeneity and its cell fate choices governed by epigenetic modifications, including DNA methylation and chromatin accessibility. My long-term goal is to understand complex biological systems utilizing computational methods.</p>
 
-<h2 style='text-align:justify;line-height:1'>Greetings! I'm currently a final-year Ph.D. student at Peking Union Medical College, specializing in stem cell biology and computational biology. My research focuses on unraveling hematopoietic stem cell heterogeneity and its cell fate choices governed by epigenetic modifications, including DNA methylation and chromatin accessibility. My long-term goal is to understand complex biological systems utilizing computational methods.</h2>
+
+
+<div class="side-by-side-container">
+    
+    <div class="info-box">
+        <h3 class="info-title">🎓 Education</h3>
+        <ul class="info-list">
+            <li><strong>2020-2024:</strong> Ph.D. in Bioinformatics, SJTU</li>
+            <li><strong>2017-2020:</strong> M.S. in Biology, Fudan University</li>
+            <li><strong>2013-2017:</strong> B.S. in Life Science, ABC University</li>
+        </ul>
+    </div>
+
+    <div class="info-box">
+        <h3 class="info-title">🔬 Research Interests</h3>
+        <ul class="info-list">
+            <li>Single-cell Multi-omics Integration</li>
+            <li>Epigenetic Regulation in Hematopoiesis</li>
+            <li>Spatial Transcriptomics Benchmarking</li>
+            <li>Deep Learning in Genomics</li>
+        </ul>
+    </div>
+
+</div>
 
 
 <div class="custom-card-container">
@@ -82,9 +158,9 @@ redirect_from:
 
     <div class="my-card">
         <div class="card-tag">Research Interests</div>
-        <ul><li><p class="card-desc">Single-cell epigenetics/genomics</p><li><ul><br>
-        <ul><li><p class="card-desc">Single-cell epigenetics/genomics</p><li><ul><br>
-        <ul><li><p class="card-desc">Single-cell epigenetics/genomics</p><li><ul>
+        <ul><li><p class="card-desc">Single-cell epigenetics/genomics</p></li></ul><br>
+        <ul><li><p class="card-desc">Single-cell epigenetics/genomics</p></li></ul><br>
+        <ul><li><p class="card-desc">Single-cell epigenetics/genomics</p></li></ul>
     </div>
 
 </div>
