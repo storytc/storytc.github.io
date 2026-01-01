@@ -8,35 +8,31 @@ redirect_from:
 ---
 
 <style>
-/* 容器：限制宽度并居中 */
 .custom-card-container {
     max-width: 800px;
     margin: 20px auto;
-    padding: 0 15px; /* 移动端防止贴边 */
+    padding: 0 15px; /* Mobile padding*/
 }
 
-/* 卡片主体 */
 .my-card {
     background: #ffffff;
-    border-radius: 12px;           /* 圆角 */
+    border-radius: 12px;           
     padding: 25px;
-    margin-bottom: 25px;           /* 卡片间距 */
-    border: 1px solid #f0f0f0;     /* 浅色边框 */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* 微弱阴影 */
-    transition: all 0.3s ease;     /* 动画过渡 */
-    display: block;                /* 强制独占一行 */
+    margin-bottom: 25px;           
+    border: 1px solid #f0f0f0;     
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;     
+    display: block;                
     width: 100%;
     box-sizing: border-box;
 }
 
-/* 鼠标悬停效果：向上浮起，阴影加深 */
 .my-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    border-color: #007bff;         /* 悬停时边框变蓝 */
+    border-color: #007bff;         /*hold blue*/
 }
 
-/* 内部装饰 */
 .card-tag {
     display: inline-block;
     padding: 4px 10px;
@@ -47,17 +43,12 @@ redirect_from:
     margin-bottom: 15px;
 }
 
-.card-title {
-    margin: 0 0 10px 0;
-    font-size: 1.4rem;
-    color: #333;
-}
 
 .card-desc {
     color: black;
-    line-height: 0.4;
+    line-height: 1.5;
     font-size: 1rem;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
 }
 
 .card-footer {
@@ -67,19 +58,17 @@ redirect_from:
     padding-top: 10px;
 }
 
-/* 1. 大容器设置 */
 .side-by-side-container {
-    display: flex;          /* 开启弹性布局 */
-    flex-wrap: wrap;        /* 关键：空间不足时自动换行 */
-    gap: 20px;              /* 两个盒子之间的间距 */
+    display: flex;          
+    flex-wrap: wrap;       
+    gap: 20px;             
     width: 100%;
     margin: 20px 0;
 }
 
-/* 2. 两个小盒子的基础样式 */
 .info-box {
-    flex: 1;                /* 默认在有空间时平分宽度 */
-    min-width: 300px;       /* 关键：当屏幕宽度小于这个值时，强制换行 */
+    flex: 1;                
+    min-width: 300px;       
     background: #ffffff;
     padding: 20px;
     border-radius: 12px;
@@ -87,7 +76,6 @@ redirect_from:
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-/* 3. 内部文字排版 */
 .info-title {
     margin-top: 0;
     color: #007bff;
@@ -97,7 +85,7 @@ redirect_from:
 }
 
 .info-list {
-    list-style: none;       /* 去掉默认圆点 */
+    list-style: none;       
     padding-left: 0;
     margin-bottom: 0;
 }
@@ -110,7 +98,6 @@ redirect_from:
     padding-left: 15px;
 }
 
-/* 自定义小圆点 */
 .info-list li::before {
     content: "•";
     color: #007bff;
@@ -131,7 +118,7 @@ redirect_from:
         <ul class="info-list">
             <li><strong>2023-2026:</strong> Ph.D. in Stem Cell and Regenerative Medicine, PUMC</li>
             <li><strong>2020-2023:</strong> M.S. in Stem Cell and Regenerative Medicine, PUMC</li>
-            <li><strong>2016-2020:</strong> B.S. in Clinical Pathology, Hebei Meidican University</li>
+            <li><strong>2016-2020:</strong> B.S. in Clinical Pathology, Hebei Medical University</li>
         </ul>
     </div>
 
@@ -169,6 +156,21 @@ redirect_from:
     <div class="my-card">
     <p class="card-desc">Zheng Z*, Yang S*, Gou F*, <b>Tang C*</b>, Zhang Z*, Gu Q, Sun G, Jiang P, Wang N, Zhao X, Kang J, Wang Y, He Y, Yang M, Lu T, Lu S, Qian P#, Zhu P#, Cheng H#, Cheng T#. <a href="https://www.sciencedirect.com/science/article/pii/S0006497124011042">The ATF4-RPS19BP1 axis modulates ribosome biogenesis to promote erythropoiesis.</a></p>
 	<div class="card-footer"><i>Blood</i>, 2024</div>
+    </div>
+
+    <div class="my-card">
+    <p class="card-desc">Cui B*, Ai L*, Lei M*, Duan Y*, <b>Tang C</b>, Zhang J, Gao Y, Li X, Zhu C, Zhang Y, Zhu X, Isobe T, Yan W#, Göttgens B#, Zhu P#. <a href="https://ashpublications.org/blood/article/145/11/1211/534575/Single-cell-epigenetic-and-clonal-analysis-decodes">Single-cell epigenetic and clonal analysis decodes disease progression in pediatric acute myeloid leukemia.</a></p>
+	<div class="card-footer"><i>Blood</i>, 2024</div>
+    </div>
+
+    <div class="my-card">
+    <p class="card-desc">Li Y*, <b>Tang C*</b>, Liu F, Zhu C, Liu F, Zhu P#, Wang L#. <a href="https://journals.biologists.com/dev/article/149/10/dev200390/275510/DNA-methylation-safeguards-the-generation-of">DNA methylation safeguards the generation of hematopoietic stem and progenitor cells by repression of Notch signaling.</a></p>
+	<div class="card-footer"><i>Development</i>, 2022</div>
+    </div>
+
+    <div class="my-card">
+    <p class="card-desc">Duan Q*, </b>Tang C*</b>, Ma Z*, Chen C, Shang X, Yue J, Jiang H, Yan G#, Xu B#. <a href="https://www.frontiersin.org/journals/oncology/articles/10.3389/fonc.2021.672020/full">Genomic heterogeneity and clonal evolution in gastroesophageal junction cancer revealed by single cell DNA sequencing.</a></p>
+	<div class="card-footer"><i>Front Oncol.</i>, 2021</div>
     </div>
 
 
