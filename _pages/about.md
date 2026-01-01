@@ -54,8 +54,8 @@ redirect_from:
 }
 
 .card-desc {
-    color: #666;
-    line-height: 1.6;
+    color: black;
+    line-height: 0.4;
     font-size: 1rem;
     margin-bottom: 15px;
 }
@@ -69,7 +69,7 @@ redirect_from:
 </style>
 
 
-<h3 style='text-align:justify'>Greetings! I'm currently a final-year Ph.D. student at Peking Union Medical College, specializing in stem cell biology and computational biology. My research focuses on unraveling hematopoietic stem cell heterogeneity and its cell fate choices governed by epigenetic modifications, including DNA methylation and chromatin accessibility. My long-term goal is to understand complex biological systems utilizing computational methods.</h3>
+<h2 style='text-align:justify;line-height:1'>Greetings! I'm currently a final-year Ph.D. student at Peking Union Medical College, specializing in stem cell biology and computational biology. My research focuses on unraveling hematopoietic stem cell heterogeneity and its cell fate choices governed by epigenetic modifications, including DNA methylation and chromatin accessibility. My long-term goal is to understand complex biological systems utilizing computational methods.</h2>
 
 
 <div class="custom-card-container">
@@ -77,14 +77,14 @@ redirect_from:
         <div class="card-tag">Education</div>
         <ul><li><p class="card-desc">2023-2026, Ph.D. Stem Cell and Regenerative Medicine, PUMC.</p></li></ul><br>
 	<ul><li><p class="card-desc">2020-2023, M.S. Stem Cell and Regenerative Medicine, PUMC.</p></li></ul><br>
-	<ul><li><p class="card-desc">2016-2020, B.S. Clinical Pathology, Hebei Medical University.</p></li></ul><br>	
+	<ul><li><p class="card-desc">2016-2020, B.S. Clinical Pathology, Hebei Medical University.</p></li></ul>
     </div>
 
     <div class="my-card">
-        <div class="card-tag">Research</div>
-        <h3 class="card-title">Single-cell Multi-omics Integration</h3>
-        <p class="card-desc">Developed a novel benchmarking framework for cellular deconvolution in spatial transcriptomics...</p>
-        <div class="card-footer">2023 - Present</div>
+        <div class="card-tag">Research Interests</div>
+        <ul><li><p class="card-desc">Single-cell epigenetics/genomics</p><li><ul><br>
+        <ul><li><p class="card-desc">Single-cell epigenetics/genomics</p><li><ul><br>
+        <ul><li><p class="card-desc">Single-cell epigenetics/genomics</p><li><ul>
     </div>
 
 </div>
