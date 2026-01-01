@@ -152,18 +152,26 @@ redirect_from:
 
 <div class="custom-card-container">
      <div class="my-card">
-        <div class="card-tag">Education</div>
-        <ul><li><p class="card-desc">2023-2026, Ph.D. Stem Cell and Regenerative Medicine, PUMC.</p></li></ul><br>
-	<ul><li><p class="card-desc">2020-2023, M.S. Stem Cell and Regenerative Medicine, PUMC.</p></li></ul><br>
-	<ul><li><p class="card-desc">2016-2020, B.S. Clinical Pathology, Hebei Medical University.</p></li></ul>
+        <p class="card-desc">Zhu C*, <b>Tang C*</b>, Pang A*, Gao Y*, Wu P*, Ai L, Zhang X, Zhang Y, Sun R, Wang C, Zhang B, Zhang W, NG Lai Guan, Cheng H#, Jiang E#, Cheng T#, Zhu P#. Simultaneous single-cell multi-omics profiling reveals epigenetic coordination in human hematopoietic differentiation and blood diseases.</p>
+	<div class="card-footer">Under Revision, 2025</div>
     </div>
 
     <div class="my-card">
-        <div class="card-tag">Research Interests</div>
-        <ul><li><p class="card-desc">Single-cell epigenetics/genomics</p></li></ul><br>
-        <ul><li><p class="card-desc">Single-cell epigenetics/genomics</p></li></ul><br>
-        <ul><li><p class="card-desc">Single-cell epigenetics/genomics</p></li></ul>
+    <p class="card-desc">Lei M*, <b>Tang C*</b>, Song X*, Gao Y, Li X, Shi J#, Zhu P#. Decoding whole genome DNA hydroxymethylation during human normal and leukemic hematopoiesis.</p>
+	<div class="card-footer">Under Review, 2025</div>
     </div>
+
+    <div class="my-card">
+    <p class="card-desc">Gao Y*, <b>Tang C*</b>, Guo X*, Zeng X*, Duan Q*, Yang X, Wu N, Zhang N, Shao Q, Xu B#. Single-cell multi-omics sequencing reveals genomic, epigenomic and transcriptomic dynamics during lymph node metastasis in breast cancer.</p>
+	<div class="card-footer">Under Review, 2025</div>
+    </div>
+
+    <div class="my-card">
+    <p class="card-desc">Zheng Z*, Yang S*, Gou F*, <b>Tang C*</b>, Zhang Z*, Gu Q, Sun G, Jiang P, Wang N, Zhao X, Kang J, Wang Y, He Y, Yang M, Lu T, Lu S, Qian P#, Zhu P#, Cheng H#, Cheng T#. <a href="https://www.sciencedirect.com/science/article/pii/S0006497124011042">The ATF4-RPS19BP1 axis modulates ribosome biogenesis to promote erythropoiesis.</a></p>
+	<div class="card-footer"><i>Blood</i>, 2024</div>
+    </div>
+
+
 
 </div>
 
