@@ -169,7 +169,7 @@ redirect_from:
     </div>
 
     <div class="my-card">
-    <p class="card-desc">Duan Q*, </b>Tang C*</b>, Ma Z*, Chen C, Shang X, Yue J, Jiang H, Yan G#, Xu B#. <a href="https://www.frontiersin.org/journals/oncology/articles/10.3389/fonc.2021.672020/full">Genomic heterogeneity and clonal evolution in gastroesophageal junction cancer revealed by single cell DNA sequencing.</a></p>
+    <p class="card-desc">Duan Q*, <b>Tang C*</b>, Ma Z*, Chen C, Shang X, Yue J, Jiang H, Yan G#, Xu B#. <a href="https://www.frontiersin.org/journals/oncology/articles/10.3389/fonc.2021.672020/full">Genomic heterogeneity and clonal evolution in gastroesophageal junction cancer revealed by single cell DNA sequencing.</a></p>
 	<div class="card-footer"><i>Front Oncol.</i>, 2021</div>
     </div>
 
