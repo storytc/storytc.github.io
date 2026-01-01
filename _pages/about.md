@@ -120,7 +120,7 @@ redirect_from:
 }
 </style>
 
-<p style='font-size:2rem;text-align:justify;line-height:2'>Greetings! I'm currently a final-year Ph.D. student at Peking Union Medical College, specializing in stem cell biology and computational biology. My research focuses on unraveling hematopoietic stem cell heterogeneity and its cell fate choices governed by epigenetic modifications, including DNA methylation and chromatin accessibility. My long-term goal is to understand complex biological systems utilizing computational methods.</p>
+<p style='font-size:1rem;text-align:justify;line-height:1.5'>Greetings! I'm currently a final-year Ph.D. student at Peking Union Medical College, specializing in stem cell biology and computational biology. My research focuses on unraveling hematopoietic stem cell heterogeneity and its cell fate choices governed by epigenetic modifications, including DNA methylation and chromatin accessibility. My long-term goal is to understand complex biological systems utilizing computational methods.</p>
 
 
 
@@ -129,24 +129,26 @@ redirect_from:
     <div class="info-box">
         <h3 class="info-title">🎓 Education</h3>
         <ul class="info-list">
-            <li><strong>2020-2024:</strong> Ph.D. in Bioinformatics, SJTU</li>
-            <li><strong>2017-2020:</strong> M.S. in Biology, Fudan University</li>
-            <li><strong>2013-2017:</strong> B.S. in Life Science, ABC University</li>
+            <li><strong>2023-2026:</strong> Ph.D. in Stem Cell and Regenerative Medicine, PUMC</li>
+            <li><strong>2020-2023:</strong> M.S. in Stem Cell and Regenerative Medicine, PUMC</li>
+            <li><strong>2016-2020:</strong> B.S. in Clinical Pathology, Hebei Meidican University</li>
         </ul>
     </div>
 
     <div class="info-box">
         <h3 class="info-title">🔬 Research Interests</h3>
         <ul class="info-list">
-            <li>Single-cell Multi-omics Integration</li>
-            <li>Epigenetic Regulation in Hematopoiesis</li>
-            <li>Spatial Transcriptomics Benchmarking</li>
-            <li>Deep Learning in Genomics</li>
+            <li>Single-cell epigenetics/genomics</li>
+            <li>Lineage tracing and cell dynamics</li>
+            <li>Deep learning in genomics</li>
+	    <Li>Generative models</li>
         </ul>
     </div>
 
 </div>
 
+
+## Publications
 
 <div class="custom-card-container">
      <div class="my-card">
@@ -166,10 +168,4 @@ redirect_from:
 </div>
 
 
-
-## Interests
-
-- Single-cell epigenetics/genomics
-- Lineage tracing
-- Generative models
 
