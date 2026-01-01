@@ -48,14 +48,14 @@ redirect_from:
     color: black;
     line-height: 1.5;
     font-size: 1rem;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
 }
 
 .card-footer {
     font-size: 0.9rem;
     color: #999;
     border-top: 1px solid #fafafa;
-    padding-top: 10px;
+    padding-top: 2px;
 }
 
 .side-by-side-container {
