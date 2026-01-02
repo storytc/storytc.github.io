@@ -107,6 +107,8 @@ redirect_from:
 }
 </style>
 
+> 生来为观看 奉命来瞭望。
+
 <p style='font-size:1rem;text-align:justify;line-height:1.5'>Greetings! I'm currently a final-year Ph.D. student at Peking Union Medical College, specializing in stem cell biology and computational biology. My research focuses on unraveling hematopoietic stem cell heterogeneity and its cell fate choices governed by epigenetic modifications, including DNA methylation and chromatin accessibility. My long-term goal is to understand complex biological systems utilizing computational methods.</p>
 
 
